@@ -32,19 +32,9 @@ def make_download_link(bytes_obj, filename, label="Descargar resultado"):
 # UI: HTML + CSS header (component)
 # -----------------------------
 
-header_html = f"""
+header_html = """
 <div class="gopass-hero">
-  <div class="brand">
-    <img class="logo" src="https://i.imgur.com/z9xt46F.jpeg" alt="gopass" />
-    <div class="titles">
-      <h1>GoPass — Validador</h1>
-      <p class="subtitle">Validador inteligente de dobles cobros · Parqueaderos · Gasolineras · Peajes · Ezytec</p>
-    </div>
-  </div>
-  <div class="hero-actions">
-    <a class="btn" href="#">Nuevo análisis</a>
-    <a class="btn ghost" href="#">Documentación</a>
-  </div>
+  ...
 </div>
 
 <style>
@@ -55,18 +45,11 @@ header_html = f"""
   --glass: rgba(255,255,255,0.04);
 }
 .gopass-hero{display:flex;justify-content:space-between;align-items:center;padding:18px;border-radius:12px;background:linear-gradient(90deg,var(--gopass-blue-1),var(--gopass-blue-2));box-shadow:0 6px 30px rgba(2,6,23,0.6);color:white;margin-bottom:18px}
-.brand{display:flex;gap:14px;align-items:center}
-.logo{width:72px;height:72px;border-radius:12px;object-fit:cover;border:2px solid rgba(255,255,255,0.06);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
-.titles h1{margin:0;font-size:20px;letter-spacing:0.3px}
-.subtitle{margin:0;opacity:0.85;font-size:13px}
-.hero-actions{display:flex;gap:8px}
-.btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 12px;border-radius:8px;text-decoration:none;color:inherit}
-.btn.ghost{background:rgba(255,255,255,0.04)}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);}
-.small-muted{font-size:12px;opacity:0.7}
+...
 @media (max-width: 700px){.gopass-hero{flex-direction:column;align-items:flex-start;gap:12px}}
 </style>
 """
+
 
 st.components.v1.html(header_html, height=120)
 
