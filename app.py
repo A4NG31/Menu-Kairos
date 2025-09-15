@@ -32,7 +32,7 @@ def make_download_link(bytes_obj, filename, label="Descargar resultado"):
     return f"<a href='{href}' download='{filename}'>{label}</a>"
 
 # -----------------------------
-# CSS Styling Mejorado
+# CSS Styling Profesional
 # -----------------------------
 st.markdown("""
 <style>
@@ -42,9 +42,9 @@ st.markdown("""
     .stDecoration {display:none;}
     .stSidebar {display:none;}
     
-    /* Fondo de la página más oscuro */
+    /* Fondo profesional con gradiente suave */
     .main .block-container {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #404040 50%, #2d2d2d 75%, #1a1a1a 100%);
+        background: linear-gradient(135deg, #0f1419 0%, #1a202c 25%, #2d3748 50%, #1a202c 75%, #0f1419 100%);
         background-attachment: fixed;
         min-height: 100vh;
         padding: 2rem;
@@ -52,22 +52,22 @@ st.markdown("""
     }
     
     .stApp {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #404040 50%, #2d2d2d 75%, #1a1a1a 100%);
+        background: linear-gradient(135deg, #0f1419 0%, #1a202c 25%, #2d3748 50%, #1a202c 75%, #0f1419 100%);
         background-attachment: fixed;
     }
     
-    /* Header principal con colores claros sobre fondo oscuro */
+    /* Header principal con excelente contraste */
     .main-header {
         text-align: center;
         color: #ffffff;
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin-bottom: 2rem;
-        padding: 2rem;
-        background: linear-gradient(90deg, #2E86AB, #A23B72);
-        border-radius: 20px;
-        border: 2px solid #2E86AB;
-        box-shadow: 0 10px 30px rgba(46, 134, 171, 0.3);
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 3rem;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 25px;
+        border: none;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
         position: relative;
         overflow: hidden;
     }
@@ -79,8 +79,8 @@ st.markdown("""
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(46, 134, 171, 0.1) 0%, transparent 70%);
-        animation: rotate 20s linear infinite;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: rotate 25s linear infinite;
     }
     
     @keyframes rotate {
@@ -94,59 +94,81 @@ st.markdown("""
     }
     
     .company-logo {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        border: 3px solid #2E86AB;
-        box-shadow: 0 8px 32px rgba(46, 134, 171, 0.3);
-        margin-bottom: 1rem;
+        border: 4px solid rgba(255,255,255,0.8);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .company-logo:hover {
+        transform: scale(1.05);
     }
     
     .header-subtitle {
-        color: #f0f8ff;
-        font-size: 1.3rem;
-        font-weight: bold;
+        color: #e2e8f0;
+        font-size: 1.4rem;
+        font-weight: 400;
         margin-top: 1rem;
-        opacity: 0.9;
+        opacity: 0.95;
+        line-height: 1.5;
     }
     
-    /* Sección de módulos con fondo oscuro */
+    /* Títulos de secciones con alto contraste */
     .sub-header {
         color: #ffffff;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin: 2rem 0 1rem 0;
-        padding: 1rem;
-        background: linear-gradient(90deg, #404040, #2d2d2d);
-        border-radius: 15px;
-        border-left: 6px solid #A23B72;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 3rem 0 2rem 0;
+        padding: 1.5rem 2rem;
+        background: linear-gradient(135deg, #4c51bf 0%, #805ad5 100%);
+        border-radius: 20px;
+        border-left: 6px solid #f6ad55;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(162, 59, 114, 0.2);
+        box-shadow: 0 10px 25px rgba(76, 81, 191, 0.25);
+        position: relative;
+    }
+    
+    .sub-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #f6ad55, #fc8181);
+        border-radius: 0 0 20px 20px;
     }
     
     /* Grid de validadores */
     .validators-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin: 2rem 0;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 2.5rem;
+        margin: 3rem 0;
     }
     
     .validator-card {
-        background: #f8f9fa;
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        border: 2px solid #e0e0e0;
-        transition: all 0.4s ease;
+        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+        border-radius: 25px;
+        padding: 2.5rem;
+        box-shadow: 
+            0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border: 2px solid #e2e8f0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
     }
     
     .validator-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-        border-color: #2E86AB;
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 
+            0 25px 50px -12px rgba(0, 0, 0, 0.25),
+            0 20px 20px -5px rgba(0, 0, 0, 0.1);
+        border-color: #667eea;
     }
     
     .validator-card::before {
@@ -155,134 +177,217 @@ st.markdown("""
         top: 0;
         left: 0;
         right: 0;
-        height: 5px;
-        background: linear-gradient(90deg, #2E86AB, #A23B72);
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     }
     
     .validator-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
+        font-size: 4.5rem;
+        margin-bottom: 1.5rem;
         display: block;
         text-align: center;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
     }
     
     .validator-title {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #2E86AB;
-        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1.5rem;
         text-align: center;
+        line-height: 1.2;
     }
     
     .validator-description {
-        color: #495057;
+        color: #4a5568;
         font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
         text-align: center;
+        font-weight: 400;
     }
     
-    /* Botones de acceso directo */
+    /* Botones profesionales mejorados */
     .direct-access-btn {
         display: inline-block;
         width: 100%;
-        padding: 1rem 2rem;
-        background: linear-gradient(45deg, #2E86AB, #A23B72);
-        color: white;
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff;
         text-decoration: none;
-        border-radius: 25px;
+        border-radius: 15px;
         font-size: 1.2rem;
-        font-weight: bold;
+        font-weight: 600;
         text-align: center;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: none;
         cursor: pointer;
-        box-shadow: 0 5px 20px rgba(46, 134, 171, 0.3);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .direct-access-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    .direct-access-btn:hover::before {
+        left: 100%;
     }
     
     .direct-access-btn:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(46, 134, 171, 0.4);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
         text-decoration: none;
-        color: white;
-        background: linear-gradient(45deg, #A23B72, #2E86AB);
+        color: #ffffff;
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     }
     
+    .direct-access-btn:active {
+        transform: translateY(-1px);
+    }
+    
+    /* Botón Ezytec con colores verdes */
     .ezytec-btn {
-        background: linear-gradient(45deg, #28a745, #20c997);
-        box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
+        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        box-shadow: 0 10px 20px rgba(72, 187, 120, 0.3);
     }
     
     .ezytec-btn:hover {
-        background: linear-gradient(45deg, #20c997, #28a745);
-        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+        box-shadow: 0 15px 30px rgba(72, 187, 120, 0.4);
     }
     
-    /* Sección especial para Ezytec con fondo oscuro */
+    /* Botón deshabilitado */
+    .btn-disabled {
+        background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
+        box-shadow: 0 5px 15px rgba(160, 174, 192, 0.2);
+        cursor: not-allowed;
+    }
+    
+    .btn-disabled:hover {
+        transform: none;
+        background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
+        box-shadow: 0 5px 15px rgba(160, 174, 192, 0.2);
+    }
+    
+    /* Sección Ezytec mejorada */
     .ezytec-section {
-        background: linear-gradient(135deg, #2d2d2d, #404040);
-        border-radius: 20px;
-        padding: 2rem;
-        margin: 2rem 0;
-        border: 2px solid #28a745;
-        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.2);
+        background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        border-radius: 25px;
+        padding: 3rem 2rem;
+        margin: 3rem 0;
+        border: 3px solid #48bb78;
+        box-shadow: 0 20px 40px rgba(72, 187, 120, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ezytec-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(72, 187, 120, 0.05) 0%, transparent 70%);
+        animation: rotate 30s linear infinite reverse;
     }
     
     .ezytec-card {
-        background: #f8f9fa;
-        border-radius: 15px;
-        padding: 2rem;
+        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+        border-radius: 20px;
+        padding: 2.5rem;
         text-align: center;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 1;
     }
     
-    /* Footer profesional con fondo oscuro */
+    /* Info boxes mejoradas */
+    .info-box {
+        background: linear-gradient(145deg, #ebf8ff 0%, #bee3f8 100%);
+        padding: 2rem;
+        border-radius: 20px;
+        border: 2px solid #3182ce;
+        margin: 2rem 0;
+        box-shadow: 0 10px 25px rgba(49, 130, 206, 0.15);
+        color: #2c5282;
+    }
+    
+    .info-box h3 {
+        color: #2b6cb0;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+    }
+    
+    .info-box ul {
+        color: #2c5282;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+    
+    .info-box strong {
+        color: #1a365d;
+        font-weight: 600;
+    }
+    
+    /* Footer profesional */
     .footer {
         text-align: center;
-        padding: 2rem;
-        color: #ffffff;
-        background: linear-gradient(90deg, #2d2d2d, #404040);
-        border-radius: 20px;
-        margin-top: 3rem;
-        border: 1px solid #555;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        padding: 3rem 2rem;
+        color: #e2e8f0;
+        background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        border-radius: 25px;
+        margin-top: 4rem;
+        border: 2px solid #4a5568;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
     
     .footer strong {
-        color: #2E86AB;
-        font-size: 1.2rem;
+        color: #667eea;
+        font-size: 1.4rem;
+        font-weight: 700;
     }
     
-    /* Info boxes con colores del CSS original */
-    .info-box {
-        background-color: #f0f8ff;
-        padding: 1.5rem;
-        border-radius: 15px;
-        border: 2px solid #d0e0ff;
-        margin: 1rem 0;
-        box-shadow: 0 4px 15px rgba(208, 224, 255, 0.2);
-        color: #333;
+    .footer p {
+        margin: 0.8rem 0;
+        font-size: 1rem;
+        line-height: 1.6;
     }
     
-    /* Responsive */
+    /* Responsive mejorado */
     @media (max-width: 768px) {
         .main-header {
-            font-size: 2rem;
-            padding: 1.5rem;
+            font-size: 2.2rem;
+            padding: 2rem 1.5rem;
         }
         
         .validators-grid {
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 2rem;
         }
         
         .validator-card {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .company-logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .sub-header {
+            font-size: 1.6rem;
+            padding: 1rem 1.5rem;
         }
     }
 </style>
@@ -306,6 +411,18 @@ st.markdown("""
 # -----------------------------
 st.markdown('<h2 class="sub-header">🔍 Validadores de Dobles Cobros</h2>', unsafe_allow_html=True)
 
+# Función JavaScript para redirección
+st.markdown("""
+<script>
+function redirectTo(url) {
+    window.open(url, '_blank');
+}
+function showAlert(message) {
+    alert(message);
+}
+</script>
+""", unsafe_allow_html=True)
+
 st.markdown("""
 <div class="validators-grid">
     <div class="validator-card">
@@ -313,11 +430,11 @@ st.markdown("""
         <h3 class="validator-title">Parqueaderos</h3>
         <p class="validator-description">
             Validación especializada para sistemas de parqueaderos y control de acceso vehicular. 
-            Detecta anomalías en cobros de estacionamiento y tarifas irregulares.
+            Detecta anomalías en cobros de estacionamiento y tarifas irregulares con algoritmos avanzados.
         </p>
-        <a href="https://validador-de-dobles-cobros-angeltorres.streamlit.app/" target="_blank" class="direct-access-btn">
+        <button onclick="window.open('https://validador-de-dobles-cobros-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
             🚀 Acceder a Parqueaderos
-        </a>
+        </button>
     </div>
     
     <div class="validator-card">
@@ -325,11 +442,11 @@ st.markdown("""
         <h3 class="validator-title">Gasolineras</h3>
         <p class="validator-description">
             Control avanzado de transacciones en estaciones de servicio y puntos de combustible. 
-            Identifica duplicados en ventas de combustible.
+            Identifica duplicados en ventas de combustible y anomalías en el sistema de facturación.
         </p>
-        <a href="https://dobles-cobros-terpel-angeltorres.streamlit.app/" target="_blank" class="direct-access-btn">
+        <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
             🚀 Acceder a Gasolineras
-        </a>
+        </button>
     </div>
     
     <div class="validator-card">
@@ -337,11 +454,11 @@ st.markdown("""
         <h3 class="validator-title">Peajes</h3>
         <p class="validator-description">
             Validación para sistemas de cobro en peajes y vías de acceso controlado. 
-            Monitoreo de transacciones en tiempo real.
+            Monitoreo de transacciones en tiempo real y detección de irregularidades.
         </p>
-        <a href="javascript:void(0)" class="direct-access-btn" onclick="alert('Módulo en desarrollo - Próximamente disponible'); return false;">
+        <button onclick="alert('Módulo en desarrollo - Próximamente disponible\\n\\n🚧 Estamos trabajando en esta funcionalidad')" class="direct-access-btn btn-disabled">
             🚧 Próximamente
-        </a>
+        </button>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -353,17 +470,17 @@ st.markdown("""
 <div class="ezytec-section">
     <h2 class="sub-header">⚡ Validador Ezytec</h2>
     <div class="ezytec-card">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">⚡</div>
-        <h3 style="color: #28a745; font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">
+        <div style="font-size: 4.5rem; margin-bottom: 1.5rem;">⚡</div>
+        <h3 style="color: #38a169; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             Sistema Ezytec
         </h3>
-        <p style="color: #495057; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
             Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
-            y procesamiento en tiempo real de transacciones.
+            y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
         </p>
-        <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank" class="direct-access-btn ezytec-btn">
+        <button onclick="window.open('https://validacion-ezytec-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn ezytec-btn">
             ⚡ Acceder al Validador Ezytec
-        </a>
+        </button>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -373,12 +490,13 @@ st.markdown("""
 # -----------------------------
 st.markdown("""
 <div class="info-box">
-    <h3 style="color: #2E86AB; margin-bottom: 1rem;">ℹ️ Información Importante</h3>
-    <ul style="color: #495057; line-height: 1.8;">
-        <li><strong>Acceso Directo:</strong> Cada botón te lleva directamente al validador correspondiente</li>
-        <li><strong>Seguridad:</strong> Todos los enlaces abren en nuevas pestañas para mantener tu sesión</li>
-        <li><strong>Soporte:</strong> Cada validador incluye ayuda contextual y ejemplos de uso</li>
-        <li><strong>Rendimiento:</strong> Algoritmos optimizados para procesamiento rápido de grandes volúmenes</li>
+    <h3>ℹ️ Información Importante</h3>
+    <ul>
+        <li><strong>Acceso Directo:</strong> Cada botón te lleva directamente al validador correspondiente en una nueva pestaña</li>
+        <li><strong>Seguridad:</strong> Conexiones seguras y encriptadas para proteger tus datos</li>
+        <li><strong>Soporte:</strong> Cada validador incluye ayuda contextual, ejemplos y documentación completa</li>
+        <li><strong>Rendimiento:</strong> Algoritmos optimizados para procesamiento rápido de grandes volúmenes de datos</li>
+        <li><strong>Actualizaciones:</strong> Sistema en constante mejora con nuevas funcionalidades</li>
     </ul>
 </div>
 """, unsafe_allow_html=True)
@@ -391,6 +509,7 @@ st.markdown("""
     <p><strong>GoPass</strong> · Sistema Profesional de Validación</p>
     <p>Desarrollado con tecnología avanzada para garantizar la precisión en la detección de anomalías</p>
     <p>Interfaz intuitiva y acceso directo a todas las herramientas de validación</p>
-    <p style="margin-top: 1rem; opacity: 0.7;">© 2024 GoPass. Todos los derechos reservados.</p>
+    <p>Soporte técnico especializado y actualizaciones continuas</p>
+    <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 GoPass. Todos los derechos reservados.</p>
 </div>
 """, unsafe_allow_html=True)
