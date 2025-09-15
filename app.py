@@ -461,10 +461,9 @@ st.markdown("""
             🚀 Acceder a Peajes
         </button>
     </div>
-
-    <div class="validator-card">
+ <div class="validator-card">
         <div class="validator-icon">🛣️</div>
-        <h3 class="validator-title">Gasolineras</h3>
+        <h3 class="validator-title">Peajes</h3>
         <p class="validator-description">
             Validación para sistemas de cobro en peajes y vías de acceso controlado. 
             Monitoreo de transacciones en tiempo real y detección de irregularidades.
@@ -473,7 +472,6 @@ st.markdown("""
             🚀 Acceder a Peajes
         </button>
     </div>
-
 
     
 </div>
