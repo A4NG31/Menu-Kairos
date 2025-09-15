@@ -450,17 +450,17 @@ st.markdown("""
     </div>
 
     
-     <div class="validator-card">
-    <div class="validator-icon">🛣️</div>
-    <h3 class="validator-title">Peajes</h3>
-    <p class="validator-description">
-        Validación para sistemas de cobro en peajes y vías de acceso controlado. 
-        Monitoreo de transacciones en tiempo real y detección de irregularidades.
-    </p>
-    <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-        🚀 Acceder a Peajes
-    </button>
-</div>
+   <div class="validator-card">
+        <div class="validator-icon">🛣️</div>
+        <h3 class="validator-title">Peajes</h3>
+        <p class="validator-description">
+            Validación para sistemas de cobro en peajes y vías de acceso controlado. 
+            Monitoreo de transacciones en tiempo real y detección de irregularidades.
+        </p>
+        <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
+            🚀 Acceder a Peajes
+        </button>
+    </div>
 
 
 """, unsafe_allow_html=True)
