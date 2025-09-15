@@ -479,12 +479,13 @@ st.markdown("""
             Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
             y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
         </p>
-        <button onclick="window.open('https://validacion-ezytec-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn ezytec-btn">
-            ⚡ Acceder al Validador Ezytec
-        </button>
+        <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
+        </a>
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 # -----------------------------
 # Información adicional
