@@ -458,7 +458,7 @@ st.markdown("""
             Identifica duplicados en ventas de combustible y anomalías en el sistema de facturación.
         </p>
         <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder al Validador de Peajes
+            🚀 Acceder al Validador de Gasolineras
         </button>
     </div>
 
