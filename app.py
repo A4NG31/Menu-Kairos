@@ -56,7 +56,7 @@ st.markdown("""
         background-attachment: fixed;
     }
     
-    /* Header principal con excelente contraste */
+    /* Header principal con verde GoPass */
     .main-header {
         text-align: center;
         color: #ffffff;
@@ -64,10 +64,10 @@ st.markdown("""
         font-weight: 800;
         margin-bottom: 3rem;
         padding: 3rem 2rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         border-radius: 25px;
         border: none;
-        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
         position: relative;
         overflow: hidden;
     }
@@ -116,18 +116,18 @@ st.markdown("""
         line-height: 1.5;
     }
     
-    /* Títulos de secciones con alto contraste */
+    /* Títulos de secciones con verde profesional */
     .sub-header {
         color: #ffffff;
         font-size: 2rem;
         font-weight: 700;
         margin: 3rem 0 2rem 0;
         padding: 1.5rem 2rem;
-        background: linear-gradient(135deg, #4c51bf 0%, #805ad5 100%);
+        background: linear-gradient(135deg, #047857 0%, #065f46 100%);
         border-radius: 20px;
-        border-left: 6px solid #f6ad55;
+        border-left: 6px solid #34d399;
         text-align: center;
-        box-shadow: 0 10px 25px rgba(76, 81, 191, 0.25);
+        box-shadow: 0 10px 25px rgba(4, 120, 87, 0.25);
         position: relative;
     }
     
@@ -138,7 +138,7 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #f6ad55, #fc8181);
+        background: linear-gradient(90deg, #34d399, #10b981);
         border-radius: 0 0 20px 20px;
     }
     
@@ -168,7 +168,7 @@ st.markdown("""
         box-shadow: 
             0 25px 50px -12px rgba(0, 0, 0, 0.25),
             0 20px 20px -5px rgba(0, 0, 0, 0.1);
-        border-color: #667eea;
+        border-color: #10b981;
     }
     
     .validator-card::before {
@@ -178,7 +178,7 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 6px;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background: linear-gradient(90deg, #10b981 0%, #059669 50%, #34d399 100%);
     }
     
     .validator-icon {
@@ -207,12 +207,12 @@ st.markdown("""
         font-weight: 400;
     }
     
-    /* Botones profesionales mejorados */
+    /* Botones profesionales con verde GoPass */
     .direct-access-btn {
         display: inline-block;
         width: 100%;
         padding: 1.2rem 2.5rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         color: #ffffff;
         text-decoration: none;
         border-radius: 15px;
@@ -222,7 +222,7 @@ st.markdown("""
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: none;
         cursor: pointer;
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         position: relative;
         overflow: hidden;
     }
@@ -244,25 +244,25 @@ st.markdown("""
     
     .direct-access-btn:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
         text-decoration: none;
         color: #ffffff;
-        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
     }
     
     .direct-access-btn:active {
         transform: translateY(-1px);
     }
     
-    /* Botón Ezytec con colores verdes */
+    /* Botón Ezytec con verde más intenso */
     .ezytec-btn {
-        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-        box-shadow: 0 10px 20px rgba(72, 187, 120, 0.3);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
     }
     
     .ezytec-btn:hover {
-        background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
-        box-shadow: 0 15px 30px rgba(72, 187, 120, 0.4);
+        background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+        box-shadow: 0 15px 30px rgba(5, 150, 105, 0.4);
     }
     
     /* Botón deshabilitado */
@@ -278,14 +278,14 @@ st.markdown("""
         box-shadow: 0 5px 15px rgba(160, 174, 192, 0.2);
     }
     
-    /* Sección Ezytec mejorada */
+    /* Sección Ezytec con verde corporativo */
     .ezytec-section {
         background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
         border-radius: 25px;
         padding: 3rem 2rem;
         margin: 3rem 0;
-        border: 3px solid #48bb78;
-        box-shadow: 0 20px 40px rgba(72, 187, 120, 0.2);
+        border: 3px solid #10b981;
+        box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
         position: relative;
         overflow: hidden;
     }
@@ -297,7 +297,7 @@ st.markdown("""
         right: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(72, 187, 120, 0.05) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
         animation: rotate 30s linear infinite reverse;
     }
     
@@ -311,32 +311,32 @@ st.markdown("""
         z-index: 1;
     }
     
-    /* Info boxes mejoradas */
+    /* Info boxes con verde profesional */
     .info-box {
-        background: linear-gradient(145deg, #ebf8ff 0%, #bee3f8 100%);
+        background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
         padding: 2rem;
         border-radius: 20px;
-        border: 2px solid #3182ce;
+        border: 2px solid #10b981;
         margin: 2rem 0;
-        box-shadow: 0 10px 25px rgba(49, 130, 206, 0.15);
-        color: #2c5282;
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+        color: #064e3b;
     }
     
     .info-box h3 {
-        color: #2b6cb0;
+        color: #047857;
         margin-bottom: 1.5rem;
         font-weight: 700;
         font-size: 1.3rem;
     }
     
     .info-box ul {
-        color: #2c5282;
+        color: #065f46;
         line-height: 1.8;
         font-size: 1rem;
     }
     
     .info-box strong {
-        color: #1a365d;
+        color: #064e3b;
         font-weight: 600;
     }
     
@@ -353,7 +353,7 @@ st.markdown("""
     }
     
     .footer strong {
-        color: #667eea;
+        color: #10b981;
         font-size: 1.4rem;
         font-weight: 700;
     }
@@ -471,7 +471,7 @@ st.markdown("""
     <h2 class="sub-header">⚡ Validador Ezytec</h2>
     <div class="ezytec-card">
         <div style="font-size: 4.5rem; margin-bottom: 1.5rem;">⚡</div>
-        <h3 style="color: #38a169; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+        <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             Sistema Ezytec
         </h3>
         <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
