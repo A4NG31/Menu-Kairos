@@ -7,7 +7,7 @@ import base64
 # Configuración de página
 st.set_page_config(
     page_title="GoPass - Validador Profesional", 
-    page_icon="https://i.imgur.com/z9xt46F.jpeg", 
+    page_icon="https://i.imgur.com/PgN46mi.jpeg", 
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -400,7 +400,7 @@ st.markdown("""
 <div class="main-header">
     <div class="header-content">
         <img src="https://i.imgur.com/PgN46mi.jpeg">
-        <h1>GoPass Validador</h1>
+        <h1>Kairos</h1>
         <p class="header-subtitle">Sistema Profesional de Validación y Control de Dobles Cobros</p>
     </div>
 </div>
@@ -508,8 +508,8 @@ st.markdown("""
 <div class="footer">
     <p><strong>GoPass</strong> · Sistema Profesional de Validación</p>
     <p>Desarrollado con tecnología avanzada para garantizar la precisión en la detección de anomalías</p>
-    <p>Interfaz intuitiva y acceso directo a todas las herramientas de validación</p>
     <p>Soporte técnico especializado y actualizaciones continuas</p>
-    <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 GoPass. Todos los derechos reservados.</p>
+    <p>Desarrollado por Angel Torres</p>
+    <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2025 GoPass. Todos los derechos reservados.</p>
 </div>
 """, unsafe_allow_html=True)
