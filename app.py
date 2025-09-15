@@ -32,7 +32,7 @@ def make_download_link(bytes_obj, filename, label="Descargar resultado"):
     return f"<a href='{href}' download='{filename}'>{label}</a>"
 
 # -----------------------------
-# CSS Styling
+# CSS Styling Mejorado
 # -----------------------------
 st.markdown("""
 <style>
@@ -40,51 +40,46 @@ st.markdown("""
     .stDeployButton {display:none;}
     footer {visibility: hidden;}
     .stDecoration {display:none;}
+    .stSidebar {display:none;}
     
-    /* Variables CSS */
-    :root {
-        --primary-blue: #1e3a8a;
-        --secondary-blue: #3b82f6;
-        --accent-teal: #0d9488;
-        --success-green: #059669;
-        --warning-orange: #d97706;
-        --danger-red: #dc2626;
-        --dark-bg: #0f172a;
-        --card-bg: #ffffff;
-        --text-primary: #1e293b;
-        --text-secondary: #64748b;
-        --border-light: #e2e8f0;
-        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    
-    /* Estilo general */
+    /* Fondo de la página con gradiente */
     .main .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 25%, #faf0f5 50%, #f0fff0 75%, #fff8dc 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 2rem;
         max-width: 1200px;
     }
     
-    /* Header profesional */
-    .professional-header {
-        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-        padding: 3rem 2rem;
-        border-radius: 20px;
-        margin-bottom: 3rem;
-        color: white;
+    .stApp {
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 25%, #faf0f5 50%, #f0fff0 75%, #fff8dc 100%);
+        background-attachment: fixed;
+    }
+    
+    /* Header principal */
+    .main-header {
         text-align: center;
-        box-shadow: var(--shadow);
+        color: #2E86AB;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        background: linear-gradient(90deg, #f0f8ff, #e6f3ff);
+        border-radius: 20px;
+        border: 2px solid #2E86AB;
+        box-shadow: 0 10px 30px rgba(46, 134, 171, 0.2);
         position: relative;
         overflow: hidden;
     }
     
-    .professional-header::before {
+    .main-header::before {
         content: '';
         position: absolute;
         top: -50%;
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(46, 134, 171, 0.1) 0%, transparent 70%);
         animation: rotate 20s linear infinite;
     }
     
@@ -98,335 +93,303 @@ st.markdown("""
         z-index: 1;
     }
     
-    .logo-container {
-        margin-bottom: 1.5rem;
-    }
-    
     .company-logo {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        border: 3px solid rgba(255,255,255,0.3);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    
-    .header-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        border: 3px solid #2E86AB;
+        box-shadow: 0 8px 32px rgba(46, 134, 171, 0.3);
+        margin-bottom: 1rem;
     }
     
     .header-subtitle {
-        font-size: 1.2rem;
+        color: #A23B72;
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-top: 1rem;
         opacity: 0.9;
-        font-weight: 300;
     }
     
-    /* Cards para módulos */
-    .modules-grid {
+    /* Sección de módulos */
+    .sub-header {
+        color: #A23B72;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 2rem 0 1rem 0;
+        padding: 1rem;
+        background-color: #faf0f5;
+        border-radius: 15px;
+        border-left: 6px solid #A23B72;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(162, 59, 114, 0.1);
+    }
+    
+    /* Grid de validadores */
+    .validators-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
         margin: 2rem 0;
     }
     
-    .module-card {
-        background: var(--card-bg);
-        border-radius: 16px;
+    .validator-card {
+        background: white;
+        border-radius: 20px;
         padding: 2rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border-light);
-        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 2px solid transparent;
+        transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
     }
     
-    .module-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+    .validator-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border-color: #2E86AB;
     }
     
-    .module-card::before {
+    .validator-card::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--accent-teal), var(--secondary-blue));
+        height: 5px;
+        background: linear-gradient(90deg, #2E86AB, #A23B72);
     }
     
-    .module-icon {
-        font-size: 3rem;
+    .validator-icon {
+        font-size: 4rem;
         margin-bottom: 1rem;
         display: block;
+        text-align: center;
     }
     
-    .module-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 0.75rem;
+    .validator-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #2E86AB;
+        margin-bottom: 1rem;
+        text-align: center;
     }
     
-    .module-description {
-        color: var(--text-secondary);
-        font-size: 1rem;
+    .validator-description {
+        color: #666;
+        font-size: 1.1rem;
         line-height: 1.6;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
     }
     
-    /* Botones profesionales */
-    .professional-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        background: linear-gradient(135deg, var(--accent-teal) 0%, var(--success-green) 100%);
+    /* Botones de acceso directo */
+    .direct-access-btn {
+        display: inline-block;
+        width: 100%;
+        padding: 1rem 2rem;
+        background: linear-gradient(45deg, #2E86AB, #A23B72);
         color: white;
         text-decoration: none;
-        border-radius: 10px;
-        font-weight: 600;
+        border-radius: 25px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        font-size: 1rem;
-        box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+        box-shadow: 0 5px 20px rgba(46, 134, 171, 0.3);
     }
     
-    .professional-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+    .direct-access-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(46, 134, 171, 0.4);
         text-decoration: none;
         color: white;
+        background: linear-gradient(45deg, #A23B72, #2E86AB);
     }
     
-    .btn-secondary {
-        background: linear-gradient(135deg, var(--text-secondary) 0%, var(--text-primary) 100%);
-        box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+    .ezytec-btn {
+        background: linear-gradient(45deg, #28a745, #20c997);
+        box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
     }
     
-    .btn-secondary:hover {
-        box-shadow: 0 6px 20px rgba(100, 116, 139, 0.4);
+    .ezytec-btn:hover {
+        background: linear-gradient(45deg, #20c997, #28a745);
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
     }
     
-    /* Sección de configuración */
-    .config-section {
-        background: var(--card-bg);
-        border-radius: 16px;
+    /* Sección especial para Ezytec */
+    .ezytec-section {
+        background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+        border-radius: 20px;
         padding: 2rem;
         margin: 2rem 0;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border-light);
+        border: 2px solid #28a745;
+        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.1);
     }
     
-    .config-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    /* Footer */
-    .professional-footer {
-        margin-top: 3rem;
+    .ezytec-card {
+        background: white;
+        border-radius: 15px;
         padding: 2rem;
         text-align: center;
-        border-top: 1px solid var(--border-light);
-        color: var(--text-secondary);
-        font-size: 0.9rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
     
-    /* Estados activos */
-    .module-active {
-        border: 2px solid var(--accent-teal);
-        background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    /* Footer profesional */
+    .footer {
+        text-align: center;
+        padding: 2rem;
+        color: #666;
+        background: linear-gradient(90deg, #f8f9fa, #ffffff);
+        border-radius: 20px;
+        margin-top: 3rem;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    
+    .footer strong {
+        color: #2E86AB;
+        font-size: 1.2rem;
+    }
+    
+    /* Info boxes */
+    .info-box {
+        background-color: #f0f8ff;
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 2px solid #d0e0ff;
+        margin: 1rem 0;
+        box-shadow: 0 4px 15px rgba(208, 224, 255, 0.2);
     }
     
     /* Responsive */
     @media (max-width: 768px) {
-        .professional-header {
-            padding: 2rem 1rem;
-        }
-        
-        .header-title {
+        .main-header {
             font-size: 2rem;
+            padding: 1.5rem;
         }
         
-        .modules-grid {
+        .validators-grid {
             grid-template-columns: 1fr;
             gap: 1rem;
         }
         
-        .module-card {
+        .validator-card {
             padding: 1.5rem;
+        }
+        
+        .company-logo {
+            width: 80px;
+            height: 80px;
         }
     }
 </style>
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Header Profesional
+# Header Principal con Logo
 # -----------------------------
 st.markdown("""
-<div class="professional-header">
+<div class="main-header">
     <div class="header-content">
-        <div class="logo-container">
-            <img src="https://i.imgur.com/z9xt46F.jpeg" alt="GoPass Logo" class="company-logo">
-        </div>
-        <h1 class="header-title">GoPass Validador</h1>
+        <img src="https://i.imgur.com/z9xt46F.jpeg" alt="GoPass Logo" class="company-logo">
+        <h1>GoPass Validador</h1>
         <p class="header-subtitle">Sistema Profesional de Validación y Control de Dobles Cobros</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Sistema de navegación con estado
+# Sección Validadores de Dobles Cobros
 # -----------------------------
-if 'selected_module' not in st.session_state:
-    st.session_state.selected_module = None
+st.markdown('<h2 class="sub-header">🔍 Validadores de Dobles Cobros</h2>', unsafe_allow_html=True)
 
-if 'selected_validator' not in st.session_state:
-    st.session_state.selected_validator = None
-
-# -----------------------------
-# Módulos principales
-# -----------------------------
-st.markdown("## 🎯 Selecciona un Módulo")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    if st.button("🔍 Validadores Dobles Cobros", key="dobles_cobros", use_container_width=True):
-        st.session_state.selected_module = "dobles_cobros"
-        st.session_state.selected_validator = None
-
-with col2:
-    if st.button("⚡ Validador Ezytec", key="ezytec", use_container_width=True):
-        st.session_state.selected_module = "ezytec"
-        st.session_state.selected_validator = "Ezytec"
-
-# -----------------------------
-# Configuración global
-# -----------------------------
 st.markdown("""
-<div class="config-section">
-    <h3 class="config-title">⚙️ Configuración General</h3>
+<div class="validators-grid">
+    <div class="validator-card">
+        <div class="validator-icon">🅿️</div>
+        <h3 class="validator-title">Parqueaderos</h3>
+        <p class="validator-description">
+            Validación especializada para sistemas de parqueaderos y control de acceso vehicular. 
+            Detecta anomalías en cobros de estacionamiento y tarifas irregulares.
+        </p>
+        <a href="https://validador-de-dobles-cobros-angeltorres.streamlit.app/" target="_blank" class="direct-access-btn">
+            🚀 Acceder a Parqueaderos
+        </a>
+    </div>
+    
+    <div class="validator-card">
+        <div class="validator-icon">⛽</div>
+        <h3 class="validator-title">Gasolineras</h3>
+        <p class="validator-description">
+            Control avanzado de transacciones en estaciones de servicio y puntos de combustible. 
+            Identifica duplicados en ventas de combustible.
+        </p>
+        <a href="https://dobles-cobros-terpel-angeltorres.streamlit.app/" target="_blank" class="direct-access-btn">
+            🚀 Acceder a Gasolineras
+        </a>
+    </div>
+    
+    <div class="validator-card">
+        <div class="validator-icon">🛣️</div>
+        <h3 class="validator-title">Peajes</h3>
+        <p class="validator-description">
+            Validación para sistemas de cobro en peajes y vías de acceso controlado. 
+            Monitoreo de transacciones en tiempo real.
+        </p>
+        <a href="#" class="direct-access-btn" onclick="alert('Módulo en desarrollo - Próximamente disponible')">
+            🚧 Próximamente
+        </a>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
-window = st.slider(
-    "🕐 Ventana de tiempo para detectar dobles cobros (minutos):",
-    min_value=1,
-    max_value=1440,
-    value=60,
-    help="Define el tiempo máximo entre transacciones para considerarlas como posible doble cobro"
-)
-
 # -----------------------------
-# Contenido dinámico según selección
-# -----------------------------
-if st.session_state.selected_module == "dobles_cobros":
-    st.markdown("---")
-    st.markdown("## 🚗 Validadores de Dobles Cobros")
-    st.markdown("Selecciona el tipo de validador específico:")
-    
-    # Grid de validadores
-    st.markdown("""
-    <div class="modules-grid">
-        <div class="module-card">
-            <div class="module-icon">🅿️</div>
-            <h3 class="module-title">Parqueaderos</h3>
-            <p class="module-description">Validación especializada para sistemas de parqueaderos y control de acceso vehicular.</p>
-        </div>
-        
-        <div class="module-card">
-            <div class="module-icon">⛽</div>
-            <h3 class="module-title">Gasolineras</h3>
-            <p class="module-description">Control de transacciones en estaciones de servicio y puntos de combustible.</p>
-        </div>
-        
-        <div class="module-card">
-            <div class="module-icon">🛣️</div>
-            <h3 class="module-title">Peajes</h3>
-            <p class="module-description">Validación para sistemas de cobro en peajes y vías de acceso controlado.</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        if st.button("🅿️ Ir a Parqueaderos", key="btn_parqueaderos", use_container_width=True):
-            st.session_state.selected_validator = "Parqueaderos"
-    
-    with col2:
-        if st.button("⛽ Ir a Gasolineras", key="btn_gasolineras", use_container_width=True):
-            st.session_state.selected_validator = "Gasolineras"
-    
-    with col3:
-        if st.button("🛣️ Ir a Peajes", key="btn_peajes", use_container_width=True):
-            st.session_state.selected_validator = "Peajes"
-
-elif st.session_state.selected_module == "ezytec":
-    st.markdown("---")
-    st.markdown("## ⚡ Validador Ezytec")
-    
-    st.markdown("""
-    <div class="module-card module-active">
-        <div class="module-icon">⚡</div>
-        <h3 class="module-title">Sistema Ezytec</h3>
-        <p class="module-description">Validación especializada para el sistema Ezytec con algoritmos avanzados de detección.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# -----------------------------
-# Redirección a validadores específicos
-# -----------------------------
-if st.session_state.selected_validator:
-    st.markdown("---")
-    st.markdown(f"### 🎯 Validador Seleccionado: {st.session_state.selected_validator}")
-    
-    # Links de redirección con botones profesionales
-    validator_links = {
-        "Gasolineras": "https://dobles-cobros-terpel-angeltorres.streamlit.app/",
-        "Parqueaderos": "https://validador-de-dobles-cobros-angeltorres.streamlit.app/",
-        "Ezytec": "https://validacion-ezytec-angeltorres.streamlit.app/"
-    }
-    
-    if st.session_state.selected_validator in validator_links:
-        link = validator_links[st.session_state.selected_validator]
-        
-        st.markdown(f"""
-        <div style="text-align: center; margin: 2rem 0;">
-            <a href="{link}" target="_blank" class="professional-btn">
-                🚀 Acceder al Validador {st.session_state.selected_validator}
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Información adicional
-        st.info(f"📋 **Configuración aplicada:** Ventana de tiempo de {window} minutos para detección de dobles cobros.")
-        
-        # Botón para volver
-        if st.button("🔙 Volver al menú principal", key="back_button"):
-            st.session_state.selected_module = None
-            st.session_state.selected_validator = None
-            st.experimental_rerun()
-    else:
-        st.warning("⚠️ Este validador aún no tiene un enlace configurado.")
-
-# -----------------------------
-# Footer profesional
+# Sección Validador Ezytec
 # -----------------------------
 st.markdown("""
-<div class="professional-footer">
+<div class="ezytec-section">
+    <h2 class="sub-header">⚡ Validador Ezytec</h2>
+    <div class="ezytec-card">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">⚡</div>
+        <h3 style="color: #28a745; font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">
+            Sistema Ezytec
+        </h3>
+        <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
+            y procesamiento en tiempo real de transacciones.
+        </p>
+        <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank" class="direct-access-btn ezytec-btn">
+            ⚡ Acceder al Validador Ezytec
+        </a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# Información adicional
+# -----------------------------
+st.markdown("""
+<div class="info-box">
+    <h3 style="color: #2E86AB; margin-bottom: 1rem;">ℹ️ Información Importante</h3>
+    <ul style="color: #666; line-height: 1.8;">
+        <li><strong>Acceso Directo:</strong> Cada botón te lleva directamente al validador correspondiente</li>
+        <li><strong>Seguridad:</strong> Todos los enlaces abren en nuevas pestañas para mantener tu sesión</li>
+        <li><strong>Soporte:</strong> Cada validador incluye ayuda contextual y ejemplos de uso</li>
+        <li><strong>Rendimiento:</strong> Algoritmos optimizados para procesamiento rápido de grandes volúmenes</li>
+    </ul>
+</div>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# Footer Profesional
+# -----------------------------
+st.markdown("""
+<div class="footer">
     <p><strong>GoPass</strong> · Sistema Profesional de Validación</p>
     <p>Desarrollado con tecnología avanzada para garantizar la precisión en la detección de anomalías</p>
-    <p>© 2024 GoPass. Todos los derechos reservados.</p>
+    <p>Interfaz intuitiva y acceso directo a todas las herramientas de validación</p>
+    <p style="margin-top: 1rem; opacity: 0.7;">© 2024 GoPass. Todos los derechos reservados.</p>
 </div>
 """, unsafe_allow_html=True)
