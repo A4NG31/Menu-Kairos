@@ -449,7 +449,7 @@ st.markdown("""
         </button>
     </div>
     
-    <div class="validator-card">
+   <div class="validator-card">
     <div class="validator-icon">🛣️</div>
     <h3 class="validator-title">Peajes</h3>
     <p class="validator-description">
@@ -460,6 +460,7 @@ st.markdown("""
         🚀 Acceder a Peajes
     </button>
 </div>
+
 
 """, unsafe_allow_html=True)
 
