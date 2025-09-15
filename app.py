@@ -400,7 +400,7 @@ st.markdown("""
 <div class="main-header">
     <div class="header-content">
         <img src="https://i.imgur.com/PgN46mi.jpeg">
-        <h1>Kairos</h1>
+        <h1>Kairos Menú</h1>
         <p class="header-subtitle">Sistema Profesional de Validación y Control de Dobles Cobros</p>
     </div>
 </div>
