@@ -399,7 +399,7 @@ st.markdown("""
 st.markdown("""
 <div class="main-header">
     <div class="header-content">
-        <img src="https://i.imgur.com/z9xt46F.jpeg" alt="GoPass Logo" class="company-logo">
+        <img src="https://i.imgur.com/PgN46mi.jpeg">
         <h1>GoPass Validador</h1>
         <p class="header-subtitle">Sistema Profesional de Validación y Control de Dobles Cobros</p>
     </div>
