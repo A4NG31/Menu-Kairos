@@ -42,9 +42,9 @@ st.markdown("""
     .stDecoration {display:none;}
     .stSidebar {display:none;}
     
-    /* Fondo de la página con gradiente */
+    /* Fondo de la página más oscuro */
     .main .block-container {
-        background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 25%, #faf0f5 50%, #f0fff0 75%, #fff8dc 100%);
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #404040 50%, #2d2d2d 75%, #1a1a1a 100%);
         background-attachment: fixed;
         min-height: 100vh;
         padding: 2rem;
@@ -52,22 +52,22 @@ st.markdown("""
     }
     
     .stApp {
-        background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 25%, #faf0f5 50%, #f0fff0 75%, #fff8dc 100%);
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #404040 50%, #2d2d2d 75%, #1a1a1a 100%);
         background-attachment: fixed;
     }
     
-    /* Header principal */
+    /* Header principal con colores claros sobre fondo oscuro */
     .main-header {
         text-align: center;
-        color: #2E86AB;
+        color: #ffffff;
         font-size: 2.5rem;
         font-weight: bold;
         margin-bottom: 2rem;
         padding: 2rem;
-        background: linear-gradient(90deg, #f0f8ff, #e6f3ff);
+        background: linear-gradient(90deg, #2E86AB, #A23B72);
         border-radius: 20px;
         border: 2px solid #2E86AB;
-        box-shadow: 0 10px 30px rgba(46, 134, 171, 0.2);
+        box-shadow: 0 10px 30px rgba(46, 134, 171, 0.3);
         position: relative;
         overflow: hidden;
     }
@@ -103,25 +103,25 @@ st.markdown("""
     }
     
     .header-subtitle {
-        color: #A23B72;
+        color: #f0f8ff;
         font-size: 1.3rem;
         font-weight: bold;
         margin-top: 1rem;
         opacity: 0.9;
     }
     
-    /* Sección de módulos */
+    /* Sección de módulos con fondo oscuro */
     .sub-header {
-        color: #A23B72;
+        color: #ffffff;
         font-size: 1.8rem;
         font-weight: bold;
         margin: 2rem 0 1rem 0;
         padding: 1rem;
-        background-color: #faf0f5;
+        background: linear-gradient(90deg, #404040, #2d2d2d);
         border-radius: 15px;
         border-left: 6px solid #A23B72;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(162, 59, 114, 0.1);
+        box-shadow: 0 4px 15px rgba(162, 59, 114, 0.2);
     }
     
     /* Grid de validadores */
@@ -133,11 +133,11 @@ st.markdown("""
     }
     
     .validator-card {
-        background: white;
+        background: #f8f9fa;
         border-radius: 20px;
         padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border: 2px solid transparent;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        border: 2px solid #e0e0e0;
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
@@ -145,7 +145,7 @@ st.markdown("""
     
     .validator-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         border-color: #2E86AB;
     }
     
@@ -175,7 +175,7 @@ st.markdown("""
     }
     
     .validator-description {
-        color: #666;
+        color: #495057;
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 2rem;
@@ -218,34 +218,34 @@ st.markdown("""
         box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
     }
     
-    /* Sección especial para Ezytec */
+    /* Sección especial para Ezytec con fondo oscuro */
     .ezytec-section {
-        background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+        background: linear-gradient(135deg, #2d2d2d, #404040);
         border-radius: 20px;
         padding: 2rem;
         margin: 2rem 0;
         border: 2px solid #28a745;
-        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.1);
+        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.2);
     }
     
     .ezytec-card {
-        background: white;
+        background: #f8f9fa;
         border-radius: 15px;
         padding: 2rem;
         text-align: center;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
     
-    /* Footer profesional */
+    /* Footer profesional con fondo oscuro */
     .footer {
         text-align: center;
         padding: 2rem;
-        color: #666;
-        background: linear-gradient(90deg, #f8f9fa, #ffffff);
+        color: #ffffff;
+        background: linear-gradient(90deg, #2d2d2d, #404040);
         border-radius: 20px;
         margin-top: 3rem;
-        border: 1px solid #e0e0e0;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        border: 1px solid #555;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
     
     .footer strong {
@@ -253,7 +253,7 @@ st.markdown("""
         font-size: 1.2rem;
     }
     
-    /* Info boxes */
+    /* Info boxes con colores del CSS original */
     .info-box {
         background-color: #f0f8ff;
         padding: 1.5rem;
@@ -261,6 +261,7 @@ st.markdown("""
         border: 2px solid #d0e0ff;
         margin: 1rem 0;
         box-shadow: 0 4px 15px rgba(208, 224, 255, 0.2);
+        color: #333;
     }
     
     /* Responsive */
@@ -338,7 +339,7 @@ st.markdown("""
             Validación para sistemas de cobro en peajes y vías de acceso controlado. 
             Monitoreo de transacciones en tiempo real.
         </p>
-        <a href="#" class="direct-access-btn" onclick="alert('Módulo en desarrollo - Próximamente disponible')">
+        <a href="javascript:void(0)" class="direct-access-btn" onclick="alert('Módulo en desarrollo - Próximamente disponible'); return false;">
             🚧 Próximamente
         </a>
     </div>
@@ -356,7 +357,7 @@ st.markdown("""
         <h3 style="color: #28a745; font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">
             Sistema Ezytec
         </h3>
-        <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+        <p style="color: #495057; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
             Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
             y procesamiento en tiempo real de transacciones.
         </p>
@@ -373,7 +374,7 @@ st.markdown("""
 st.markdown("""
 <div class="info-box">
     <h3 style="color: #2E86AB; margin-bottom: 1rem;">ℹ️ Información Importante</h3>
-    <ul style="color: #666; line-height: 1.8;">
+    <ul style="color: #495057; line-height: 1.8;">
         <li><strong>Acceso Directo:</strong> Cada botón te lleva directamente al validador correspondiente</li>
         <li><strong>Seguridad:</strong> Todos los enlaces abren en nuevas pestañas para mantener tu sesión</li>
         <li><strong>Soporte:</strong> Cada validador incluye ayuda contextual y ejemplos de uso</li>
