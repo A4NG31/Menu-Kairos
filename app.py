@@ -432,9 +432,9 @@ st.markdown("""
             Validación especializada para sistemas de parqueaderos y control de acceso vehicular. 
             Detecta anomalías en cobros de estacionamiento y tarifas irregulares con algoritmos avanzados.
         </p>
-        <button onclick="window.open('https://validador-de-dobles-cobros-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder al Validador de Parqueaderos
-        </button>
+        <a href="https://validador-de-dobles-cobros-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn">🚀 Acceder al Validador de Parqueaderos</button>
+        </a>
     </div>
     
    <div class="validator-card">
@@ -444,28 +444,25 @@ st.markdown("""
             Validación para sistemas de cobro en peajes y vías de acceso controlado. 
             Monitoreo de transacciones en tiempo real y detección de irregularidades.
         </p>
-        <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder al Validador de Peajes
-        </button>
+        <a href="https://dobles-cobros-terpel-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn">🚀 Acceder al Validador de Peajes</button>
+        </a>
     </div>
 
-    
- <div class="validator-card">
+   <div class="validator-card">
         <div class="validator-icon">⛽</div>
         <h3 class="validator-title">Gasolineras</h3>
         <p class="validator-description">
             Control avanzado de transacciones en estaciones de servicio y puntos de combustible. 
             Identifica duplicados en ventas de combustible y anomalías en el sistema de facturación.
         </p>
-        <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder al Validador de Gasolineras
-        </button>
+        <a href="https://dobles-cobros-terpel-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn">🚀 Acceder al Validador de Gasolineras</button>
+        </a>
     </div>
-
-    
 </div>
-
 """, unsafe_allow_html=True)
+
 
 # -----------------------------
 # Sección Validador Ezytec
