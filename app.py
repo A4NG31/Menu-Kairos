@@ -433,7 +433,7 @@ st.markdown("""
             Detecta anomalías en cobros de estacionamiento y tarifas irregulares con algoritmos avanzados.
         </p>
         <button onclick="window.open('https://validador-de-dobles-cobros-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder a Parqueaderos
+            🚀 Acceder al Validador de Parqueaderos
         </button>
     </div>
     
@@ -445,7 +445,7 @@ st.markdown("""
             Monitoreo de transacciones en tiempo real y detección de irregularidades.
         </p>
         <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder a Peajes
+            🚀 Acceder al Validador de Peajes
         </button>
     </div>
 
@@ -458,7 +458,7 @@ st.markdown("""
             Identifica duplicados en ventas de combustible y anomalías en el sistema de facturación.
         </p>
         <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder a Peajes
+            🚀 Acceder al Validador de Peajes
         </button>
     </div>
 
