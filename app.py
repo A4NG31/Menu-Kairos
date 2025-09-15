@@ -436,19 +436,6 @@ st.markdown("""
             🚀 Acceder a Parqueaderos
         </button>
     </div>
-
-    <div class="validator-card">
-        <div class="validator-icon">⛽</div>
-        <h3 class="validator-title">Gasolineras</h3>
-        <p class="validator-description">
-            Control avanzado de transacciones en estaciones de servicio y puntos de combustible. 
-            Identifica duplicados en ventas de combustible y anomalías en el sistema de facturación.
-        </p>
-        <button onclick="window.open('https://dobles-cobros-terpel-angeltorres.streamlit.app/', '_blank')" class="direct-access-btn">
-            🚀 Acceder a Gasolineras
-        </button>
-    </div>
-
     
    <div class="validator-card">
         <div class="validator-icon">🛣️</div>
@@ -461,6 +448,8 @@ st.markdown("""
             🚀 Acceder a Peajes
         </button>
     </div>
+
+    
  <div class="validator-card">
         <div class="validator-icon">⛽</div>
         <h3 class="validator-title">Gasolineras</h3>
