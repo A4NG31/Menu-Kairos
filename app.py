@@ -495,7 +495,7 @@ st.markdown("""
     <h2 class="sub-header">🌐 Validador Códigos Cybersource</h2>
     <div class="ezytec-card">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 80px; height: 80px;">
+        <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 90px; height: 90px;">
         </div>
         <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             Pasarela Cybersource
