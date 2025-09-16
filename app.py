@@ -492,7 +492,7 @@ st.markdown("""
 # -----------------------------
 st.markdown("""
 <div class="ezytec-section">
-    <h2 class="sub-header">🌐 Validador Códigos Pasarela Cybersource</h2>
+    <h2 class="sub-header">🌐 Validador Códigos Cybersource</h2>
     <div class="ezytec-card">
         <div style="font-size: 4.5rem; margin-bottom: 1.5rem;">🌐</div>
         <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
@@ -507,6 +507,7 @@ st.markdown("""
                    box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);">
                 🌐 Acceder al Validador Cybersource
             </button>
+            <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
         </a>
     </div>
 </div>
