@@ -499,15 +499,11 @@ st.markdown("""
             Pasarela Cybersource
         </h3>
         <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada de <strong>códigos y transacciones</strong> en la pasarela de pago Cybersource. 
+            Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
             Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
         </p>
         <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn" style="background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
-                   box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);">
-                🌐 Acceder al Validador Cybersource
-            </button>
-            <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
+            <button class="direct-access-btn ezytec-btn">🌐 Acceder al Validador Cybersource</button>
         </a>
     </div>
 </div>
