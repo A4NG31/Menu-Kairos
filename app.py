@@ -473,7 +473,7 @@ st.markdown("""
     <h2 class="sub-header">⚡ Validador Ezytec</h2>
     <div class="ezytec-card">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/mWsxLPA.png" alt="Ezytec" style="width: 150px; height: 140px;">
+        <img src="https://i.imgur.com/NGGCVFZ.png" alt="Ezytec" style="width: 150px; height: 140px;">
         </div>
         <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             Sistema Ezytec
