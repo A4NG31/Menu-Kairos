@@ -443,7 +443,6 @@ st.markdown("""
         <p class="validator-description">
             🚧Validación para sistemas de cobro en peajes y vías de acceso controlado. 
             Monitoreo de transacciones en tiempo real y detección de irregularidades.
-
             🚨⚠️MODULO EN CONSTRUCCIÓN⚠️🚨🚧
         </p>
         <a href="https://dobles-cobros-terpel-angeltorres.streamlit.app/" target="_blank">
