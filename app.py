@@ -472,7 +472,9 @@ st.markdown("""
 <div class="ezytec-section">
     <h2 class="sub-header">⚡ Validador Ezytec</h2>
     <div class="ezytec-card">
-        <div style="font-size: 4.5rem; margin-bottom: 1.5rem;">⚡</div>
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+        <img src="https://i.imgur.com/9m7Sk8b.png" alt="Ezytec" style="width: 150px; height: 140px;">
+        </div>
         <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             Sistema Ezytec
         </h3>
