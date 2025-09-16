@@ -488,28 +488,29 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Botón Validador Códigos Pasarela Cybersource
+# Sección Validador Codigos Pasarela Cybersource
 # -----------------------------
-st.markdown(
-    """
-    <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
-        <button style="
-            background-color:#1E3A8A;
-            color:white;
-            border:none;
-            padding:12px 24px;
-            border-radius:8px;
-            cursor:pointer;
-            font-size:16px;
-            margin-top:10px;
-        ">
-        🌐 Validador Códigos Pasarela Cybersource
-        </button>
-    </a>
-    """,
-    unsafe_allow_html=True
-)
-
+st.markdown("""
+<div class="ezytec-section">
+    <h2 class="sub-header">🌐 Validador Códigos Pasarela Cybersource</h2>
+    <div class="ezytec-card">
+        <div style="font-size: 4.5rem; margin-bottom: 1.5rem;">🌐</div>
+        <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+            Pasarela Cybersource
+        </h3>
+        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+            Validación especializada de <strong>códigos y transacciones</strong> en la pasarela de pago Cybersource. 
+            Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
+        </p>
+        <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn ezytec-btn" style="background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
+                   box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);">
+                🌐 Acceder al Validador Cybersource
+            </button>
+        </a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 
 # -----------------------------
