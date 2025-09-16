@@ -487,6 +487,30 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# -----------------------------
+# Botón Validador Códigos Pasarela Cybersource
+# -----------------------------
+st.markdown(
+    """
+    <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
+        <button style="
+            background-color:#1E3A8A;
+            color:white;
+            border:none;
+            padding:12px 24px;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+            margin-top:10px;
+        ">
+        🌐 Validador Códigos Pasarela Cybersource
+        </button>
+    </a>
+    """,
+    unsafe_allow_html=True
+)
+
+
 
 # -----------------------------
 # Información adicional
