@@ -520,20 +520,20 @@ st.markdown("""
 # -----------------------------
 st.markdown("""
 <div class="ezytec-section">
-    <h2 class="sub-header">🌐 BI Conciliaciones</h2>
+    <h2 class="sub-header">📈 BI Conciliaciones Peajes</h2>
     <div class="ezytec-card">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 150px; height: 140px;">
+        <img src="https://i.imgur.com/FdKWIlL.png" alt="Cybersource" style="width: 150px; height: 140px;">
         </div>
         <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            Pasarela Cybersource
+            Conciliaciones Peajes
         </h3>
         <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
             Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
             Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
         </p>
         <a href="https://app.powerbi.com/reportEmbed?reportId=a169d1d0-9fe8-4dfe-8271-abfde807dd95&autoAuth=true&ctid=f917ed1b-b403-49c5-b80b-baae3ce0375a" target="_blank">
-            <button class="direct-access-btn ezytec-btn">🌐 Acceder al BI de Conciliaciones</button>
+            <button class="direct-access-btn ezytec-btn">📈 Acceder al BI de Conciliaciones Peajes</button>
         </a>
     </div>
 </div>
