@@ -523,9 +523,9 @@ st.markdown("""
     <h2 class="sub-header">📈 BI Conciliaciones Peajes</h2>
     <div class="ezytec-card">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/PZFyGpU.png" alt="Cybersource" style="width: 300px; height: 140px;">
+        <img src="https://i.imgur.com/PZFyGpU.png" alt="Cybersource" style="width: 260px; height: 140px;">
         </div>
-        <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+        <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             Conciliaciones Peajes
         </h3>
         <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
