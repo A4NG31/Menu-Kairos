@@ -468,7 +468,7 @@ st.markdown("""
         <h3 class="validator-title">Skidata</h3>
         <p class="validator-description">
             Validación  especializada para sistemas de cobro en parqueaderos de Skidata. 
-            Monitoreo de transacciones y detección de irregularidades con dashboard interactivo.
+            Monitoreo de transacciones y detección de irregularidades de dobles cobros comparando ambas bases, incluye dashboard interactivo.
         </p>
         <a href="https://skidata-dobles-cobros-angeltorres.streamlit.app/" target="_blank">
             <button class="direct-access-btn">🚀 Acceder al Validador de Skidata</button>
