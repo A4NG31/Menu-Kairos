@@ -461,21 +461,21 @@ st.markdown("""
             <button class="direct-access-btn">🚀 Acceder al Validador de Gasolineras</button>
         </a>
     </div>
-
-
+    
    <div class="validator-card">
         <div class="validator-icon">🎿</div>
         <h3 class="validator-title">Skidata</h3>
         <p class="validator-description">
             Validación para sistemas de cobro en Skidata. 
             Monitoreo de transacciones y detección de irregularidades.
-
         </p>
         <a href="https://skidata-dobles-cobros-angeltorres.streamlit.app/" target="_blank">
             <button class="direct-access-btn">🚀 Acceder al Validador de Skidata</button>
         </a>
     </div>
+    
 </div>
+
 
 """, unsafe_allow_html=True)
 
