@@ -454,8 +454,9 @@ st.markdown("""
         <div class="validator-icon">⛽</div>
         <h3 class="validator-title">Gasolineras</h3>
         <p class="validator-description">
-            Control avanzado de transacciones en estaciones de servicio y puntos de combustible. 
-            Identifica duplicados en ventas de combustible y anomalías en el sistema de facturación.
+            Control avanzado Y especializado de transacciones en estaciones de servicio y puntos de combustible. 
+            Identifica duplicados en cobros de combustible para estaciones de sercvicio.
+            TERPEL
         </p>
         <a href="https://dobles-cobros-terpel-angeltorres.streamlit.app/" target="_blank">
             <button class="direct-access-btn">🚀 Acceder al Validador de Gasolineras</button>
@@ -466,8 +467,8 @@ st.markdown("""
         <div class="validator-icon">🎿</div>
         <h3 class="validator-title">Skidata</h3>
         <p class="validator-description">
-            Validación para sistemas de cobro en Skidata. 
-            Monitoreo de transacciones y detección de irregularidades.
+            Validación  especializada para sistemas de cobro en parqueaderos de Skidata. 
+            Monitoreo de transacciones y detección de irregularidades con dashboard interactivo.
         </p>
         <a href="https://skidata-dobles-cobros-angeltorres.streamlit.app/" target="_blank">
             <button class="direct-access-btn">🚀 Acceder al Validador de Skidata</button>
