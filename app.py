@@ -464,7 +464,7 @@ st.markdown("""
     </div>
     
    <div class="validator-card">
-        <div class="validator-icon">🎿</div>
+        <div class="validator-icon">💳</div>
         <h3 class="validator-title">Skidata</h3>
         <p class="validator-description">
             Validación  especializada para sistemas de cobro en parqueaderos de Skidata. 
