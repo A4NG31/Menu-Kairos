@@ -532,7 +532,7 @@ st.markdown("""
 
 
 # -----------------------------
-# Sección BI Conciliaciones
+# Sección Tableros BI
 # -----------------------------
 st.markdown("""
 <div class="ezytec-section">
@@ -550,6 +550,30 @@ st.markdown("""
         </p>
         <a href="https://app.powerbi.com/view?r=eyJrIjoiNzhjOWEwMzctNmZhYy00NjE1LThjZjctNDVlMjdmMmFlNDlmIiwidCI6ImY5MTdlZDFiLWI0MDMtNDljNS1iODBiLWJhYWUzY2UwMzc1YSJ9" target="_blank">
             <button class="direct-access-btn ezytec-btn">📈 Acceder al Menu de reportes BI</button>
+        </a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# Sección Validador Motores Facturación
+# -----------------------------
+st.markdown("""
+<div class="ezytec-section">
+    <h2 class="sub-header">🧾 Validador Motores Facturación</h2>
+    <div class="ezytec-card">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+        <img src="https://i.imgur.com/PZFyGpU.png" alt="Cybersource" style="width: 260px; height: 140px;">
+        </div>
+        <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+            MOTORES FACTURACIÓN
+        </h3>
+        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+            Validación especializada de motores de facturación mediante <strong>Scrapping</strong> en los diferentes portales. 
+            Genera mensaje para envio de whatsapp.
+        </p>
+        <a href="https://validacion-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn ezytec-btn">🧾 Acceder al Validador Motores Facturación</button>
         </a>
     </div>
 </div>
