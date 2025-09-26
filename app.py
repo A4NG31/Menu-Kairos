@@ -572,7 +572,7 @@ st.markdown("""
             Validación especializada de motores de facturación mediante <strong>Scrapping</strong> en los diferentes portales. 
             Genera mensaje para envio de whatsapp.
         </p>
-        <a href="https://validacion-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
+        <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
             <button class="direct-access-btn ezytec-btn">🧾 Acceder al Validador Motores Facturación</button>
         </a>
     </div>
