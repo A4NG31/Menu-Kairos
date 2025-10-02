@@ -545,8 +545,7 @@ st.markdown("""
             REPORTES POWER BI
         </h3>
         <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Modulo de acceso directo al menú de  <strong>Reportes POWER BI</strong> para las respectivas validaciones y analisis de insidencias. 
-           
+            Modulo de acceso directo al menú de  <strong>Reportes POWER BI</strong> para las respectivas validaciones y analisis de insidencias.
         </p>
         <a href="https://app.powerbi.com/view?r=eyJrIjoiNzhjOWEwMzctNmZhYy00NjE1LThjZjctNDVlMjdmMmFlNDlmIiwidCI6ImY5MTdlZDFiLWI0MDMtNDljNS1iODBiLWJhYWUzY2UwMzc1YSJ9" target="_blank">
             <button class="direct-access-btn ezytec-btn">📈 Acceder al Menu de reportes BI</button>
