@@ -539,14 +539,14 @@ st.markdown("""
     <h2 class="sub-header">📈 Menú reportes BI</h2>
     <div class="ezytec-card">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/PZFyGpU.png" alt="Cybersource" style="width: 260px; height: 140px;">
+        <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 260px; height: 140px;">
         </div>
         <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             REPORTES POWER BI
         </h3>
         <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
-            Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
+            Modulo de acceso directo al menú de  <strong>Reportes POWER BI</strong> para las respectivas validaciones y analisis de insidencias. 
+           
         </p>
         <a href="https://app.powerbi.com/view?r=eyJrIjoiNzhjOWEwMzctNmZhYy00NjE1LThjZjctNDVlMjdmMmFlNDlmIiwidCI6ImY5MTdlZDFiLWI0MDMtNDljNS1iODBiLWJhYWUzY2UwMzc1YSJ9" target="_blank">
             <button class="direct-access-btn ezytec-btn">📈 Acceder al Menu de reportes BI</button>
