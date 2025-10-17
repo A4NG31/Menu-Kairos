@@ -582,6 +582,32 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
+
+# -----------------------------
+# Sección Validador Motores Facturación
+# -----------------------------
+st.markdown("""
+<div class="ezytec-section">
+    <h2 class="sub-header">🏧 Conciliaciones Automaticas Peajes</h2>
+    <div class="ezytec-card">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+        <img src="https://i.imgur.com/fHvLuR1.png">
+        </div>
+        <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+            CONCILIACIONES PEAJES
+        </h3>
+        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+            Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
+            Genera mensaje para envio de email.
+        </p>
+        <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
+        </a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+
 # -----------------------------
 # Información adicional
 # -----------------------------
