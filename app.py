@@ -13,15 +13,6 @@ st.set_page_config(
 )
 
 # -----------------------------
-# Estado de sesión para controlar la selección
-# -----------------------------
-if 'show_concession_select' not in st.session_state:
-    st.session_state.show_concession_select = False
-
-if 'show_peaje_select' not in st.session_state:
-    st.session_state.show_peaje_select = False
-
-# -----------------------------
 # Helper functions
 # -----------------------------
 def to_excel_bytes(df_dict):
@@ -378,55 +369,6 @@ st.markdown("""
         line-height: 1.6;
     }
     
-    /* Estilos para selección de concesiones */
-    .selection-container {
-        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
-        border-radius: 25px;
-        padding: 3rem;
-        margin: 2rem 0;
-        border: 3px solid #10b981;
-        box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
-        text-align: center;
-    }
-    
-    .selection-title {
-        color: #047857;
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-    
-    .selection-subtitle {
-        color: #4a5568;
-        font-size: 1.3rem;
-        margin-bottom: 2.5rem;
-        text-align: center;
-        line-height: 1.6;
-    }
-    
-    .selection-btn {
-        display: block;
-        width: 100%;
-        padding: 1.5rem 2rem;
-        margin: 1rem 0;
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        color: white;
-        border: none;
-        border-radius: 15px;
-        font-size: 1.3rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-    }
-    
-    .selection-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4);
-        background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    }
-    
     /* Responsive mejorado */
     @media (max-width: 768px) {
         .main-header {
@@ -456,15 +398,6 @@ st.markdown("""
         .ezytec-section {
             margin: 0.5rem 0;
         }
-        
-        .selection-container {
-            padding: 2rem;
-            margin: 1rem;
-        }
-        
-        .selection-title {
-            font-size: 1.8rem;
-        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -486,6 +419,18 @@ st.markdown("""
 # Sección Validadores de Dobles Cobros
 # -----------------------------
 st.markdown('<h2 class="sub-header">🔍 Validadores de Dobles Cobros</h2>', unsafe_allow_html=True)
+
+# Función JavaScript para redirección
+st.markdown("""
+<script>
+function redirectTo(url) {
+    window.open(url, '_blank');
+}
+function showAlert(message) {
+    alert(message);
+}
+</script>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="validators-grid">
@@ -637,8 +582,9 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
+
 # -----------------------------
-# Sección Validador Conciliaciones Automáticas Peajes
+# Sección Validador Motores Facturación
 # -----------------------------
 st.markdown("""
 <div class="ezytec-section">
@@ -654,94 +600,13 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-""", unsafe_allow_html=True)
-
-# Botón principal para abrir la selección de concesiones
-if st.button("🧾 Acceder al menu de conciliaciones automáticas", key="conciliaciones_btn", use_container_width=True):
-    st.session_state.show_concession_select = True
-    st.session_state.show_peaje_select = False
-
-st.markdown("""
+        <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
+            <button class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
+        </a>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# -----------------------------
-# Selección de Concesiones (cuando está activa)
-# -----------------------------
-if st.session_state.show_concession_select:
-    st.markdown("""
-    <div class="selection-container">
-        <h2 class="selection-title">🏗️ Seleccione la Concesión</h2>
-        <p class="selection-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Botones de concesiones
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        if st.button("🏢 APP GICA", key="app_gica", use_container_width=True):
-            st.session_state.show_concession_select = False
-            # Redireccionar a APP GICA
-            js = "window.open('https://app-gica-validacion-automatica.streamlit.app/', '_blank');"
-            st.components.v1.html(f"<script>{js}</script>", height=0)
-    
-    with col2:
-        if st.button("🛣️ ALTERNATIVAS VIALES", key="alternativas_viales", use_container_width=True):
-            st.session_state.show_concession_select = False
-            st.session_state.show_peaje_select = True
-    
-    with col3:
-        if st.button("🌄 ALTO MAGDALENA (ALMA)", key="alma", use_container_width=True):
-            st.session_state.show_concession_select = False
-            # Redireccionar a ALMA
-            js = "window.open('https://alma-validacion-automatica.streamlit.app/', '_blank');"
-            st.components.v1.html(f"<script>{js}</script>", height=0)
-    
-    # Botón para cancelar
-    if st.button("❌ Cancelar", key="cancel_concession", use_container_width=True):
-        st.session_state.show_concession_select = False
-
-# -----------------------------
-# Selección de Peajes (cuando está activa)
-# -----------------------------
-if st.session_state.show_peaje_select:
-    st.markdown("""
-    <div class="selection-container">
-        <h2 class="selection-title">🛣️ Seleccione el Peaje</h2>
-        <p class="selection-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Botones de peajes
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        if st.button("🏞️ ALVARADO", key="alvarado", use_container_width=True):
-            st.session_state.show_peaje_select = False
-            # Redireccionar a ALVARADO
-            js = "window.open('https://alvarado-validacion-automatica-angeltorres.streamlit.app/', '_blank');"
-            st.components.v1.html(f"<script>{js}</script>", height=0)
-    
-    with col2:
-        if st.button("🌊 HONDA", key="honda", use_container_width=True):
-            st.session_state.show_peaje_select = False
-            # Redireccionar a HONDA
-            js = "window.open('https://validacion-automatica-honda-angeltorres.streamlit.app/', '_blank');"
-            st.components.v1.html(f"<script>{js}</script>", height=0)
-    
-    with col3:
-        if st.button("🌋 ARMERO", key="armero", use_container_width=True):
-            st.session_state.show_peaje_select = False
-            # Redireccionar a ARMERO
-            js = "window.open('https://armero-validacion-automatica-angeltorres.streamlit.app/', '_blank');"
-            st.components.v1.html(f"<script>{js}</script>", height=0)
-    
-    # Botón para volver
-    if st.button("↩️ Volver a Concesiones", key="back_peaje", use_container_width=True):
-        st.session_state.show_peaje_select = False
-        st.session_state.show_concession_select = True
 
 # -----------------------------
 # Información adicional
@@ -751,7 +616,6 @@ st.markdown("""
     <h3>ℹ️ Información Importante</h3>
     <ul>
         <li><strong>Acceso Directo:</strong> Cada botón te lleva directamente al validador correspondiente en una nueva pestaña</li>
-        <li><strong>Selección Inteligente:</strong> Para conciliaciones de peajes, selecciona primero la concesión y luego el peaje específico</li>
         <li><strong>Seguridad:</strong> Conexiones seguras y encriptadas para proteger tus datos</li>
         <li><strong>Soporte:</strong> Cada validador incluye ayuda contextual, ejemplos y documentación completa</li>
         <li><strong>Rendimiento:</strong> Algoritmos optimizados para procesamiento rápido de grandes volúmenes de datos</li>
