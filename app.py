@@ -513,25 +513,74 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# JavaScript para manejar los modales
+# JavaScript para manejar los modales - INYECTADO AL FINAL
 # -----------------------------
-st.markdown("""
+modal_js = """
 <script>
+// Función para esperar a que el DOM esté listo
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Configurar event listeners para los botones
+    waitForElm('#conciliacionesBtn').then(btn => {
+        btn.addEventListener('click', openConcessionModal);
+    });
+    
+    // Configurar cierre de modales al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-overlay')) {
+            e.target.classList.remove('active');
+        }
+    });
+});
+
+// Funciones globales para los modales
 function openConcessionModal() {
-    document.getElementById('concessionModal').classList.add('active');
+    const modal = document.getElementById('concessionModal');
+    if (modal) {
+        modal.classList.add('active');
+    }
 }
 
 function closeConcessionModal() {
-    document.getElementById('concessionModal').classList.remove('active');
+    const modal = document.getElementById('concessionModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 function openPeajeModal() {
     closeConcessionModal();
-    document.getElementById('peajeModal').classList.add('active');
+    const modal = document.getElementById('peajeModal');
+    if (modal) {
+        modal.classList.add('active');
+    }
 }
 
 function closePeajeModal() {
-    document.getElementById('peajeModal').classList.remove('active');
+    const modal = document.getElementById('peajeModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 function redirectTo(url) {
@@ -539,20 +588,8 @@ function redirectTo(url) {
     closeConcessionModal();
     closePeajeModal();
 }
-
-// Cerrar modal al hacer clic fuera del contenido
-document.addEventListener('DOMContentLoaded', function() {
-    const modals = document.querySelectorAll('.modal-overlay');
-    modals.forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-            }
-        });
-    });
-});
 </script>
-""", unsafe_allow_html=True)
+"""
 
 # -----------------------------
 # Modales HTML
@@ -790,10 +827,15 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-        <button class="direct-access-btn ezytec-btn" onclick="openConcessionModal()">🧾 Acceder al menu de conciliaciones automáticas</button>
+        <button id="conciliacionesBtn" class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+# -----------------------------
+# Inyectar el JavaScript al final para asegurar que funcione
+# -----------------------------
+st.components.v1.html(modal_js, height=0)
 
 # -----------------------------
 # Información adicional
