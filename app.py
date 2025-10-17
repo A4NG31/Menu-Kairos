@@ -591,7 +591,7 @@ st.markdown("""
     <h2 class="sub-header">🏧 Conciliaciones Automaticas Peajes</h2>
     <div class="ezytec-card">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/fHvLuR1.png">
+        <img src="https://i.imgur.com/bMlpAkW.png">
         </div>
         <h3 style="color: #EA3323; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
             CONCILIACIONES PEAJES
