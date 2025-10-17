@@ -545,7 +545,7 @@ with col3:
     <div class="ezytec-section" style="margin-right: 0.5rem;">
         <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
-            <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 220px; height: 100px;">
+            <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 260px; height: 140px;">
             </div>
             <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
                 REPORTES POWER BI
@@ -566,7 +566,7 @@ with col4:
     <div class="ezytec-section" style="margin-left: 0.5rem;">
         <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
-            <img src="https://i.imgur.com/VbDfzO5.png" alt="Cybersource" style="width: 240px; height: 180px;">
+            <img src="https://i.imgur.com/VbDfzO5.png" alt="Cybersource" style="width: 260px; height: 140px;">
             </div>
             <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
                 MOTORES FACTURACIÓN
