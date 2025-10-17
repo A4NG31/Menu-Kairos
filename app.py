@@ -13,6 +13,15 @@ st.set_page_config(
 )
 
 # -----------------------------
+# Estado de sesión para controlar la selección
+# -----------------------------
+if 'show_concession_select' not in st.session_state:
+    st.session_state.show_concession_select = False
+
+if 'show_peaje_select' not in st.session_state:
+    st.session_state.show_peaje_select = False
+
+# -----------------------------
 # Helper functions
 # -----------------------------
 def to_excel_bytes(df_dict):
@@ -32,7 +41,7 @@ def make_download_link(bytes_obj, filename, label="Descargar resultado"):
     return f"<a href='{href}' download='{filename}'>{label}</a>"
 
 # -----------------------------
-# CSS Styling Profesional (incluyendo estilos para modales)
+# CSS Styling Profesional
 # -----------------------------
 st.markdown("""
 <style>
@@ -54,107 +63,6 @@ st.markdown("""
     .stApp {
         background: linear-gradient(135deg, #0f1419 0%, #1a202c 25%, #2d3748 50%, #1a202c 75%, #0f1419 100%);
         background-attachment: fixed;
-    }
-    
-    /* Modal Styles */
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.8);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        backdrop-filter: blur(10px);
-    }
-    
-    .modal-overlay.active {
-        display: flex;
-    }
-    
-    .modal-content {
-        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
-        border-radius: 25px;
-        padding: 3rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        border: 3px solid #10b981;
-        max-width: 600px;
-        width: 90%;
-        text-align: center;
-        position: relative;
-        animation: modalAppear 0.3s ease-out;
-    }
-    
-    @keyframes modalAppear {
-        from {
-            opacity: 0;
-            transform: scale(0.8) translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-    }
-    
-    .modal-title {
-        color: #047857;
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-    
-    .modal-subtitle {
-        color: #4a5568;
-        font-size: 1.3rem;
-        margin-bottom: 2.5rem;
-        text-align: center;
-        line-height: 1.6;
-    }
-    
-    .concession-btn, .peaje-btn {
-        display: block;
-        width: 100%;
-        padding: 1.5rem 2rem;
-        margin: 1rem 0;
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        color: white;
-        border: none;
-        border-radius: 15px;
-        font-size: 1.3rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-        text-decoration: none;
-    }
-    
-    .concession-btn:hover, .peaje-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4);
-        background: linear-gradient(135deg, #059669 0%, #047857 100%);
-        color: white;
-        text-decoration: none;
-    }
-    
-    .close-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        color: #718096;
-        cursor: pointer;
-        transition: color 0.3s ease;
-        z-index: 10000;
-    }
-    
-    .close-btn:hover {
-        color: #e53e3e;
     }
     
     /* Header principal con verde GoPass */
@@ -470,6 +378,55 @@ st.markdown("""
         line-height: 1.6;
     }
     
+    /* Estilos para selección de concesiones */
+    .selection-container {
+        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+        border-radius: 25px;
+        padding: 3rem;
+        margin: 2rem 0;
+        border: 3px solid #10b981;
+        box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+        text-align: center;
+    }
+    
+    .selection-title {
+        color: #047857;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .selection-subtitle {
+        color: #4a5568;
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        line-height: 1.6;
+    }
+    
+    .selection-btn {
+        display: block;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    }
+    
+    .selection-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    
     /* Responsive mejorado */
     @media (max-width: 768px) {
         .main-header {
@@ -500,107 +457,16 @@ st.markdown("""
             margin: 0.5rem 0;
         }
         
-        .modal-content {
+        .selection-container {
             padding: 2rem;
             margin: 1rem;
         }
         
-        .modal-title {
+        .selection-title {
             font-size: 1.8rem;
         }
     }
 </style>
-""", unsafe_allow_html=True)
-
-# -----------------------------
-# JavaScript y Modales HTML - TODO EN UNO
-# -----------------------------
-st.markdown("""
-<script>
-function openConcessionModal() {
-    document.getElementById('concessionModal').classList.add('active');
-}
-
-function closeConcessionModal() {
-    document.getElementById('concessionModal').classList.remove('active');
-}
-
-function openPeajeModal() {
-    closeConcessionModal();
-    document.getElementById('peajeModal').classList.add('active');
-}
-
-function closePeajeModal() {
-    document.getElementById('peajeModal').classList.remove('active');
-}
-
-function redirectTo(url) {
-    window.open(url, '_blank');
-    closeConcessionModal();
-    closePeajeModal();
-}
-
-// Cerrar modal al hacer clic fuera del contenido
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-        e.target.classList.remove('active');
-    }
-});
-
-// Asignar evento al botón de conciliaciones
-document.addEventListener('DOMContentLoaded', function() {
-    const conciliacionesBtn = document.getElementById('conciliacionesBtn');
-    if (conciliacionesBtn) {
-        conciliacionesBtn.addEventListener('click', openConcessionModal);
-    }
-});
-</script>
-
-<!-- Modal de Selección de Concesión -->
-<div class="modal-overlay" id="concessionModal">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closeConcessionModal()">×</button>
-        <h2 class="modal-title">🏗️ Seleccione la Concesión</h2>
-        <p class="modal-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
-        
-        <button class="concession-btn" onclick="redirectTo('https://app-gica-validacion-automatica.streamlit.app/')">
-            🏢 APP GICA
-        </button>
-        
-        <button class="concession-btn" onclick="openPeajeModal()">
-            🛣️ ALTERNATIVAS VIALES
-        </button>
-        
-        <button class="concession-btn" onclick="redirectTo('https://alma-validacion-automatica.streamlit.app/')">
-            🌄 ALTO MAGDALENA (ALMA)
-        </button>
-    </div>
-</div>
-
-<!-- Modal de Selección de Peaje -->
-<div class="modal-overlay" id="peajeModal">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closePeajeModal()">×</button>
-        <h2 class="modal-title">🛣️ Seleccione el Peaje</h2>
-        <p class="modal-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
-        
-        <button class="peaje-btn" onclick="redirectTo('https://alvarado-validacion-automatica-angeltorres.streamlit.app/')">
-            🏞️ ALVARADO
-        </button>
-        
-        <button class="peaje-btn" onclick="redirectTo('https://validacion-automatica-honda-angeltorres.streamlit.app/')">
-            🌊 HONDA
-        </button>
-        
-        <button class="peaje-btn" onclick="redirectTo('https://armero-validacion-automatica-angeltorres.streamlit.app/')">
-            🌋 ARMERO
-        </button>
-        
-        <button class="peaje-btn" style="background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); margin-top: 2rem;" onclick="closePeajeModal(); openConcessionModal()">
-            ↩️ Volver a Concesiones
-        </button>
-    </div>
-</div>
 """, unsafe_allow_html=True)
 
 # -----------------------------
@@ -788,10 +654,94 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-        <button id="conciliacionesBtn" class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
+""", unsafe_allow_html=True)
+
+# Botón principal para abrir la selección de concesiones
+if st.button("🧾 Acceder al menu de conciliaciones automáticas", key="conciliaciones_btn", use_container_width=True):
+    st.session_state.show_concession_select = True
+    st.session_state.show_peaje_select = False
+
+st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+# -----------------------------
+# Selección de Concesiones (cuando está activa)
+# -----------------------------
+if st.session_state.show_concession_select:
+    st.markdown("""
+    <div class="selection-container">
+        <h2 class="selection-title">🏗️ Seleccione la Concesión</h2>
+        <p class="selection-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Botones de concesiones
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏢 APP GICA", key="app_gica", use_container_width=True):
+            st.session_state.show_concession_select = False
+            # Redireccionar a APP GICA
+            js = "window.open('https://app-gica-validacion-automatica.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    with col2:
+        if st.button("🛣️ ALTERNATIVAS VIALES", key="alternativas_viales", use_container_width=True):
+            st.session_state.show_concession_select = False
+            st.session_state.show_peaje_select = True
+    
+    with col3:
+        if st.button("🌄 ALTO MAGDALENA (ALMA)", key="alma", use_container_width=True):
+            st.session_state.show_concession_select = False
+            # Redireccionar a ALMA
+            js = "window.open('https://alma-validacion-automatica.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    # Botón para cancelar
+    if st.button("❌ Cancelar", key="cancel_concession", use_container_width=True):
+        st.session_state.show_concession_select = False
+
+# -----------------------------
+# Selección de Peajes (cuando está activa)
+# -----------------------------
+if st.session_state.show_peaje_select:
+    st.markdown("""
+    <div class="selection-container">
+        <h2 class="selection-title">🛣️ Seleccione el Peaje</h2>
+        <p class="selection-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Botones de peajes
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏞️ ALVARADO", key="alvarado", use_container_width=True):
+            st.session_state.show_peaje_select = False
+            # Redireccionar a ALVARADO
+            js = "window.open('https://alvarado-validacion-automatica-angeltorres.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    with col2:
+        if st.button("🌊 HONDA", key="honda", use_container_width=True):
+            st.session_state.show_peaje_select = False
+            # Redireccionar a HONDA
+            js = "window.open('https://validacion-automatica-honda-angeltorres.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    with col3:
+        if st.button("🌋 ARMERO", key="armero", use_container_width=True):
+            st.session_state.show_peaje_select = False
+            # Redireccionar a ARMERO
+            js = "window.open('https://armero-validacion-automatica-angeltorres.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    # Botón para volver
+    if st.button("↩️ Volver a Concesiones", key="back_peaje", use_container_width=True):
+        st.session_state.show_peaje_select = False
+        st.session_state.show_concession_select = True
 
 # -----------------------------
 # Información adicional
