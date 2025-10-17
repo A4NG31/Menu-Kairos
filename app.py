@@ -32,7 +32,45 @@ def make_download_link(bytes_obj, filename, label="Descargar resultado"):
     return f"<a href='{href}' download='{filename}'>{label}</a>"
 
 # -----------------------------
-# CSS Styling Profesional
+# Estado de sesión para controlar las ventanas emergentes
+# -----------------------------
+if 'show_concession_modal' not in st.session_state:
+    st.session_state.show_concession_modal = False
+
+if 'show_peaje_modal' not in st.session_state:
+    st.session_state.show_peaje_modal = False
+
+if 'selected_concession' not in st.session_state:
+    st.session_state.selected_concession = None
+
+# -----------------------------
+# Funciones para manejar las selecciones
+# -----------------------------
+def open_concession_modal():
+    st.session_state.show_concession_modal = True
+    st.session_state.show_peaje_modal = False
+
+def select_concession(concession):
+    st.session_state.selected_concession = concession
+    st.session_state.show_concession_modal = False
+    if concession == "APP GICA":
+        st.markdown('<script>window.open("https://app-gica-validacion-automatica.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
+    elif concession == "ALTO MAGDALENA (ALMA)":
+        st.markdown('<script>window.open("https://alma-validacion-automatica.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
+    elif concession == "ALTERNATIVAS VIALES":
+        st.session_state.show_peaje_modal = True
+
+def select_peaje(peaje):
+    st.session_state.show_peaje_modal = False
+    if peaje == "ALVARADO":
+        st.markdown('<script>window.open("https://alvarado-validacion-automatica-angeltorres.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
+    elif peaje == "HONDA":
+        st.markdown('<script>window.open("https://validacion-automatica-honda-angeltorres.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
+    elif peaje == "ARMERO":
+        st.markdown('<script>window.open("https://armero-validacion-automatica-angeltorres.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
+
+# -----------------------------
+# CSS Styling Profesional (incluyendo estilos para modales)
 # -----------------------------
 st.markdown("""
 <style>
@@ -56,7 +94,100 @@ st.markdown("""
         background-attachment: fixed;
     }
     
-    /* Header principal con verde GoPass */
+    /* Modal Styles */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+        border-radius: 25px;
+        padding: 3rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border: 3px solid #10b981;
+        max-width: 600px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+        animation: modalAppear 0.3s ease-out;
+    }
+    
+    @keyframes modalAppear {
+        from {
+            opacity: 0;
+            transform: scale(0.8) translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+    
+    .modal-title {
+        color: #047857;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .modal-subtitle {
+        color: #4a5568;
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        line-height: 1.6;
+    }
+    
+    .concession-btn, .peaje-btn {
+        display: block;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    }
+    
+    .concession-btn:hover, .peaje-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #718096;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    
+    .close-btn:hover {
+        color: #e53e3e;
+    }
+    
+    /* Resto de tus estilos existentes... */
     .main-header {
         text-align: center;
         color: #ffffff;
@@ -116,7 +247,6 @@ st.markdown("""
         line-height: 1.5;
     }
     
-    /* Títulos de secciones con verde profesional */
     .sub-header {
         color: #ffffff;
         font-size: 2rem;
@@ -142,7 +272,6 @@ st.markdown("""
         border-radius: 0 0 20px 20px;
     }
     
-    /* Grid de validadores */
     .validators-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -207,7 +336,6 @@ st.markdown("""
         font-weight: 400;
     }
     
-    /* Botones profesionales con verde GoPass */
     .direct-access-btn {
         display: inline-block;
         width: 100%;
@@ -254,7 +382,6 @@ st.markdown("""
         transform: translateY(-1px);
     }
     
-    /* Botón Ezytec con verde más intenso */
     .ezytec-btn {
         background: linear-gradient(135deg, #059669 0%, #047857 100%);
         box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
@@ -265,7 +392,6 @@ st.markdown("""
         box-shadow: 0 15px 30px rgba(5, 150, 105, 0.4);
     }
     
-    /* Botón deshabilitado */
     .btn-disabled {
         background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
         box-shadow: 0 5px 15px rgba(160, 174, 192, 0.2);
@@ -278,7 +404,6 @@ st.markdown("""
         box-shadow: 0 5px 15px rgba(160, 174, 192, 0.2);
     }
     
-    /* Sección Ezytec con verde corporativo */
     .ezytec-section {
         background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
         border-radius: 25px;
@@ -316,7 +441,6 @@ st.markdown("""
         justify-content: space-between;
     }
     
-    /* Info boxes con verde profesional */
     .info-box {
         background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
         padding: 2rem;
@@ -345,7 +469,6 @@ st.markdown("""
         font-weight: 600;
     }
     
-    /* Footer profesional */
     .footer {
         text-align: center;
         padding: 3rem 2rem;
@@ -369,7 +492,6 @@ st.markdown("""
         line-height: 1.6;
     }
     
-    /* Responsive mejorado */
     @media (max-width: 768px) {
         .main-header {
             font-size: 2.2rem;
@@ -398,6 +520,15 @@ st.markdown("""
         .ezytec-section {
             margin: 0.5rem 0;
         }
+        
+        .modal-content {
+            padding: 2rem;
+            margin: 1rem;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -419,18 +550,6 @@ st.markdown("""
 # Sección Validadores de Dobles Cobros
 # -----------------------------
 st.markdown('<h2 class="sub-header">🔍 Validadores de Dobles Cobros</h2>', unsafe_allow_html=True)
-
-# Función JavaScript para redirección
-st.markdown("""
-<script>
-function redirectTo(url) {
-    window.open(url, '_blank');
-}
-function showAlert(message) {
-    alert(message);
-}
-</script>
-""", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="validators-grid">
@@ -582,9 +701,8 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
-
 # -----------------------------
-# Sección Validador Motores Facturación
+# Sección Validador Conciliaciones Automáticas Peajes
 # -----------------------------
 st.markdown("""
 <div class="ezytec-section">
@@ -600,13 +718,100 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-        <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
-        </a>
+        <button onclick="window.concessionModalOpen()" class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
+# -----------------------------
+# JavaScript para manejar la apertura del modal
+# -----------------------------
+st.markdown("""
+<script>
+window.concessionModalOpen = function() {
+    window.parent.postMessage({
+        type: 'streamlit:setComponentValue',
+        value: 'open_concession_modal'
+    }, '*');
+}
+</script>
+""", unsafe_allow_html=True)
+
+# -----------------------------
+# Manejo de eventos desde JavaScript
+# -----------------------------
+if st.session_state.get('component_value') == 'open_concession_modal':
+    open_concession_modal()
+    st.session_state.component_value = None
+
+# -----------------------------
+# Modales (ventanas emergentes)
+# -----------------------------
+
+# Modal de selección de concesión
+if st.session_state.show_concession_modal:
+    st.markdown("""
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'close_concession_modal'}, '*')">×</button>
+            <h2 class="modal-title">🏗️ Seleccione la Concesión</h2>
+            <p class="modal-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
+            
+            <button class="concession-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_APP GICA'}, '*')">
+                🏢 APP GICA
+            </button>
+            
+            <button class="concession-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ALTERNATIVAS VIALES'}, '*')">
+                🛣️ ALTERNATIVAS VIALES
+            </button>
+            
+            <button class="concession-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ALTO MAGDALENA (ALMA)'}, '*')">
+                🌄 ALTO MAGDALENA (ALMA)
+            </button>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Modal de selección de peaje (solo para ALTERNATIVAS VIALES)
+if st.session_state.show_peaje_modal:
+    st.markdown("""
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'close_peaje_modal'}, '*')">×</button>
+            <h2 class="modal-title">🛣️ Seleccione el Peaje</h2>
+            <p class="modal-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
+            
+            <button class="peaje-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ALVARADO'}, '*')">
+                🏞️ ALVARADO
+            </button>
+            
+            <button class="peaje-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_HONDA'}, '*')">
+                🌊 HONDA
+            </button>
+            
+            <button class="peaje-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ARMERO'}, '*')">
+                🌋 ARMERO
+            </button>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# -----------------------------
+# Manejo de todas las selecciones
+# -----------------------------
+component_value = st.session_state.get('component_value')
+if component_value:
+    if component_value == 'close_concession_modal':
+        st.session_state.show_concession_modal = False
+    elif component_value == 'close_peaje_modal':
+        st.session_state.show_peaje_modal = False
+    elif component_value.startswith('select_'):
+        selection = component_value.replace('select_', '')
+        if selection in ['APP GICA', 'ALTERNATIVAS VIALES', 'ALTO MAGDALENA (ALMA)']:
+            select_concession(selection)
+        elif selection in ['ALVARADO', 'HONDA', 'ARMERO']:
+            select_peaje(selection)
+    st.session_state.component_value = None
 
 # -----------------------------
 # Información adicional
@@ -616,6 +821,7 @@ st.markdown("""
     <h3>ℹ️ Información Importante</h3>
     <ul>
         <li><strong>Acceso Directo:</strong> Cada botón te lleva directamente al validador correspondiente en una nueva pestaña</li>
+        <li><strong>Selección Inteligente:</strong> Para conciliaciones de peajes, selecciona primero la concesión y luego el peaje específico</li>
         <li><strong>Seguridad:</strong> Conexiones seguras y encriptadas para proteger tus datos</li>
         <li><strong>Soporte:</strong> Cada validador incluye ayuda contextual, ejemplos y documentación completa</li>
         <li><strong>Rendimiento:</strong> Algoritmos optimizados para procesamiento rápido de grandes volúmenes de datos</li>
