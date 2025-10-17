@@ -481,53 +481,87 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# -----------------------------
-# Sección Validador Ezytec
-# -----------------------------
 st.markdown("""
-<div class="ezytec-section">
-    <h2 class="sub-header">⚡ Validador Ezytec</h2>
-    <div class="ezytec-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/NGGCVFZ.png" alt="Ezytec" style="width: 150px; height: 140px;">
+<style>
+.section-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px; /* espacio entre los dos */
+    flex-wrap: wrap; /* por si se reduce la pantalla */
+}
+.ezytec-section {
+    flex: 1;
+    max-width: 48%; /* cada uno ocupa menos de la mitad */
+    box-sizing: border-box;
+}
+.ezytec-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+.direct-access-btn {
+    background: #047857;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.direct-access-btn:hover {
+    background: #065f46;
+}
+</style>
+
+<div class="section-container">
+
+    <!-- Validador Ezytec -->
+    <div class="ezytec-section">
+        <h2 class="sub-header">⚡ Validador Ezytec</h2>
+        <div class="ezytec-card">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="https://i.imgur.com/NGGCVFZ.png" alt="Ezytec" style="width: 150px; height: 140px;">
+            </div>
+            <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+                Sistema Ezytec
+            </h3>
+            <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+                Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
+                y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
+            </p>
+            <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank">
+                <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
+            </a>
         </div>
-        <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            Sistema Ezytec
-        </h3>
-        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
-            y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
-        </p>
-        <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
-        </a>
     </div>
+
+    <!-- Validador Cybersource -->
+    <div class="ezytec-section">
+        <h2 class="sub-header">🌐 Validador Códigos Cybersource</h2>
+        <div class="ezytec-card">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 150px; height: 140px;">
+            </div>
+            <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+                Pasarela Cybersource
+            </h3>
+            <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+                Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
+                Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
+            </p>
+            <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
+                <button class="direct-access-btn ezytec-btn">🌐 Acceder al Validador Cybersource</button>
+            </a>
+        </div>
+    </div>
+
 </div>
 """, unsafe_allow_html=True)
 
-# -----------------------------
-# Sección Validador Codigos Pasarela Cybersource
-# -----------------------------
-st.markdown("""
-<div class="ezytec-section">
-    <h2 class="sub-header">🌐 Validador Códigos Cybersource</h2>
-    <div class="ezytec-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 150px; height: 140px;">
-        </div>
-        <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            Pasarela Cybersource
-        </h3>
-        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
-            Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
-        </p>
-        <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn">🌐 Acceder al Validador Cybersource</button>
-        </a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
 
 
 
