@@ -283,11 +283,12 @@ st.markdown("""
         background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
         border-radius: 25px;
         padding: 3rem 2rem;
-        margin: 3rem 0;
+        margin: 1rem 0;
         border: 3px solid #10b981;
         box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
         position: relative;
         overflow: hidden;
+        height: 100%;
     }
     
     .ezytec-section::before {
@@ -309,6 +310,10 @@ st.markdown("""
         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         position: relative;
         z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     
     /* Info boxes con verde profesional */
@@ -388,6 +393,10 @@ st.markdown("""
         .sub-header {
             font-size: 1.6rem;
             padding: 1rem 1.5rem;
+        }
+        
+        .ezytec-section {
+            margin: 0.5rem 0;
         }
     }
 </style>
@@ -479,64 +488,61 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Sección Validador Ezytec
+# Sección Validadores Especializados (2x2 Grid)
 # -----------------------------
-st.markdown("""
-<div class="ezytec-section">
-    <h2 class="sub-header">⚡ Validador Ezytec</h2>
-    <div class="ezytec-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/NGGCVFZ.png" alt="Ezytec" style="width: 150px; height: 140px;">
-        </div>
-        <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            Sistema Ezytec
-        </h3>
-        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
-            y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
-        </p>
-        <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
-        </a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+st.markdown('<h2 class="sub-header">⚡ Validadores Especializados</h2>', unsafe_allow_html=True)
 
-# -----------------------------
-# Sección Validador Codigos Pasarela Cybersource
-# -----------------------------
-st.markdown("""
-<div class="ezytec-section">
-    <h2 class="sub-header">🌐 Validador Códigos Cybersource</h2>
-    <div class="ezytec-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 150px; height: 140px;">
-        </div>
-        <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            Pasarela Cybersource
-        </h3>
-        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
-            Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
-        </p>
-        <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn">🌐 Acceder al Validador Cybersource</button>
-        </a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# -----------------------------
-# Sección Tableros BI y Validador Motores Facturación (en la misma fila)
-# -----------------------------
-st.markdown('<h2 class="sub-header">📊 Herramientas de Análisis</h2>', unsafe_allow_html=True)
-
-# Crear dos columnas para colocar las secciones lado a lado
+# Primera fila: Ezytec y Cybersource
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("""
-    <div class="ezytec-section" style="margin-right: 1rem;">
+    <div class="ezytec-section" style="margin-right: 0.5rem;">
+        <div class="ezytec-card">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="https://i.imgur.com/NGGCVFZ.png" alt="Ezytec" style="width: 150px; height: 140px;">
+            </div>
+            <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+                Sistema Ezytec
+            </h3>
+            <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+                Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
+                y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
+            </p>
+            <a href="https://validacion-ezytec-angeltorres.streamlit.app/" target="_blank">
+                <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Ezytec</button>
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+    <div class="ezytec-section" style="margin-left: 0.5rem;">
+        <div class="ezytec-card">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 150px; height: 140px;">
+            </div>
+            <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+                Pasarela Cybersource
+            </h3>
+            <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+                Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
+                Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
+            </p>
+            <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
+                <button class="direct-access-btn ezytec-btn">🌐 Acceder al Validador Cybersource</button>
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Segunda fila: Power BI y Motores Facturación
+col3, col4 = st.columns(2)
+
+with col3:
+    st.markdown("""
+    <div class="ezytec-section" style="margin-right: 0.5rem;">
         <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
             <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 260px; height: 140px;">
@@ -555,9 +561,9 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
 
-with col2:
+with col4:
     st.markdown("""
-    <div class="ezytec-section" style="margin-left: 1rem;">
+    <div class="ezytec-section" style="margin-left: 0.5rem;">
         <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
             <img src="https://i.imgur.com/VbDfzO5.png" alt="Cybersource" style="width: 240px; height: 180px;">
