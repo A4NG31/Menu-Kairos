@@ -399,7 +399,7 @@ st.markdown("""
 st.markdown("""
 <div class="main-header">
     <div class="header-content">
-        <img src="https://i.imgur.com/PgN46mi.jpeg">
+        <img src="https://i.imgur.com/PgN46mi.jpeg" class="company-logo">
         <h1>Kairos Menú</h1>
         <p class="header-subtitle">Sistema Profesional de Validación y Control de Dobles Cobros</p>
     </div>
@@ -476,10 +476,7 @@ st.markdown("""
     </div>
     
 </div>
-
-
 """, unsafe_allow_html=True)
-
 
 # -----------------------------
 # Sección Validador Ezytec
@@ -529,57 +526,55 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-
-
 # -----------------------------
-# Sección Tableros BI
+# Sección Tableros BI y Validador Motores Facturación (en la misma fila)
 # -----------------------------
-st.markdown("""
-<div class="ezytec-section">
-    <h2 class="sub-header">📈 Menú reportes BI</h2>
-    <div class="ezytec-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 260px; height: 140px;">
+st.markdown('<h2 class="sub-header">📊 Herramientas de Análisis</h2>', unsafe_allow_html=True)
+
+# Crear dos columnas para colocar las secciones lado a lado
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+    <div class="ezytec-section" style="margin-right: 1rem;">
+        <div class="ezytec-card">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 260px; height: 140px;">
+            </div>
+            <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+                REPORTES POWER BI
+            </h3>
+            <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+                Modulo de acceso directo al menú de  <strong>Reportes POWER BI</strong> para las respectivas validaciones y analisis de insidencias.
+                Validación efectiva.
+            </p>
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiNzhjOWEwMzctNmZhYy00NjE1LThjZjctNDVlMjdmMmFlNDlmIiwidCI6ImY5MTdlZDFiLWI0MDMtNDljNS1iODBiLWJhYWUzY2UwMzc1YSJ9" target="_blank">
+                <button class="direct-access-btn ezytec-btn">📈 Acceder al Menu de reportes BI</button>
+            </a>
         </div>
-        <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            REPORTES POWER BI
-        </h3>
-        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Modulo de acceso directo al menú de  <strong>Reportes POWER BI</strong> para las respectivas validaciones y analisis de insidencias.
-            Validación efectiva.
-        </p>
-        <a href="https://app.powerbi.com/view?r=eyJrIjoiNzhjOWEwMzctNmZhYy00NjE1LThjZjctNDVlMjdmMmFlNDlmIiwidCI6ImY5MTdlZDFiLWI0MDMtNDljNS1iODBiLWJhYWUzY2UwMzc1YSJ9" target="_blank">
-            <button class="direct-access-btn ezytec-btn">📈 Acceder al Menu de reportes BI</button>
-        </a>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-# -----------------------------
-# Sección Validador Motores Facturación
-# -----------------------------
-st.markdown("""
-<div class="ezytec-section">
-    <h2 class="sub-header">🧾 Validador Motores Facturación</h2>
-    <div class="ezytec-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-        <img src="https://i.imgur.com/VbDfzO5.png" alt="Cybersource" style="width: 240px; height: 180px;">
+with col2:
+    st.markdown("""
+    <div class="ezytec-section" style="margin-left: 1rem;">
+        <div class="ezytec-card">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="https://i.imgur.com/VbDfzO5.png" alt="Cybersource" style="width: 240px; height: 180px;">
+            </div>
+            <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+                MOTORES FACTURACIÓN
+            </h3>
+            <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
+                Validación especializada de motores de facturación mediante <strong>Scrapping</strong> en los diferentes portales. 
+                Genera mensaje para envio de whatsapp.
+            </p>
+            <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
+                <button class="direct-access-btn ezytec-btn">🧾 Acceder al Validador Motores Facturación</button>
+            </a>
         </div>
-        <h3 style="color: #1E3A8A; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
-            MOTORES FACTURACIÓN
-        </h3>
-        <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-            Validación especializada de motores de facturación mediante <strong>Scrapping</strong> en los diferentes portales. 
-            Genera mensaje para envio de whatsapp.
-        </p>
-        <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
-            <button class="direct-access-btn ezytec-btn">🧾 Acceder al Validador Motores Facturación</button>
-        </a>
     </div>
-</div>
-""", unsafe_allow_html=True)
-
-
+    """, unsafe_allow_html=True)
 
 # -----------------------------
 # Información adicional
