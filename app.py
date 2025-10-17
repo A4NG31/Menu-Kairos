@@ -528,7 +528,7 @@ with col2:
             </h3>
             <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
                 Validación especializada de códigos y transacciones mediante <strong>IA</strong> en la pasarela de pago Cybersource. 
-                Asegura la detección de errores y anomalías con algoritmos optimizados para procesos financieros críticos.
+                Asegura la detección de errores y anomalías con algoritmos optimizados.
             </p>
             <a href="https://codigos-pasarela-angeltorres.streamlit.app/" target="_blank">
                 <button class="direct-access-btn ezytec-btn">🌐 Acceder al Validador Cybersource</button>
