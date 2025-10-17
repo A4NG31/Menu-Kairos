@@ -600,7 +600,7 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-        <a href="https://auto-motores-facturacion-angeltorres.streamlit.app/" target="_blank">
+        <a href="https://menu--conciliaciones-automaticas-de-peajes-angeltorres.streamlit.app/" target="_blank">
             <button class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
         </a>
     </div>
