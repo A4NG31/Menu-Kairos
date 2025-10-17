@@ -545,7 +545,7 @@ with col3:
     <div class="ezytec-section" style="margin-right: 0.5rem;">
         <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
-            <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 260px; height: 140px;">
+            <img src="https://i.imgur.com/PZFyGpU.png" alt="POWERBI" style="width: 240px; height: 120px;">
             </div>
             <h3 style="color: #FFC900; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
                 REPORTES POWER BI
