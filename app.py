@@ -13,6 +13,15 @@ st.set_page_config(
 )
 
 # -----------------------------
+# Estado de sesión para los modales
+# -----------------------------
+if 'show_concession_modal' not in st.session_state:
+    st.session_state.show_concession_modal = False
+
+if 'show_peaje_modal' not in st.session_state:
+    st.session_state.show_peaje_modal = False
+
+# -----------------------------
 # Helper functions
 # -----------------------------
 def to_excel_bytes(df_dict):
@@ -64,15 +73,11 @@ st.markdown("""
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.8);
-        display: none;
+        display: flex;
         justify-content: center;
         align-items: center;
         z-index: 9999;
         backdrop-filter: blur(10px);
-    }
-    
-    .modal-overlay.active {
-        display: flex;
     }
     
     .modal-content {
@@ -513,136 +518,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# JavaScript para manejar los modales - INYECTADO AL FINAL
-# -----------------------------
-modal_js = """
-<script>
-// Función para esperar a que el DOM esté listo
-function waitForElm(selector) {
-    return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
-
-        const observer = new MutationObserver(mutations => {
-            if (document.querySelector(selector)) {
-                observer.disconnect();
-                resolve(document.querySelector(selector));
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-    });
-}
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    // Configurar event listeners para los botones
-    waitForElm('#conciliacionesBtn').then(btn => {
-        btn.addEventListener('click', openConcessionModal);
-    });
-    
-    // Configurar cierre de modales al hacer clic fuera
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('modal-overlay')) {
-            e.target.classList.remove('active');
-        }
-    });
-});
-
-// Funciones globales para los modales
-function openConcessionModal() {
-    const modal = document.getElementById('concessionModal');
-    if (modal) {
-        modal.classList.add('active');
-    }
-}
-
-function closeConcessionModal() {
-    const modal = document.getElementById('concessionModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-}
-
-function openPeajeModal() {
-    closeConcessionModal();
-    const modal = document.getElementById('peajeModal');
-    if (modal) {
-        modal.classList.add('active');
-    }
-}
-
-function closePeajeModal() {
-    const modal = document.getElementById('peajeModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-}
-
-function redirectTo(url) {
-    window.open(url, '_blank');
-    closeConcessionModal();
-    closePeajeModal();
-}
-</script>
-"""
-
-# -----------------------------
-# Modales HTML
-# -----------------------------
-st.markdown("""
-<!-- Modal de Selección de Concesión -->
-<div class="modal-overlay" id="concessionModal">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closeConcessionModal()">×</button>
-        <h2 class="modal-title">🏗️ Seleccione la Concesión</h2>
-        <p class="modal-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
-        
-        <button class="concession-btn" onclick="redirectTo('https://app-gica-validacion-automatica.streamlit.app/')">
-            🏢 APP GICA
-        </button>
-        
-        <button class="concession-btn" onclick="openPeajeModal()">
-            🛣️ ALTERNATIVAS VIALES
-        </button>
-        
-        <button class="concession-btn" onclick="redirectTo('https://alma-validacion-automatica.streamlit.app/')">
-            🌄 ALTO MAGDALENA (ALMA)
-        </button>
-    </div>
-</div>
-
-<!-- Modal de Selección de Peaje -->
-<div class="modal-overlay" id="peajeModal">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closePeajeModal()">×</button>
-        <h2 class="modal-title">🛣️ Seleccione el Peaje</h2>
-        <p class="modal-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
-        
-        <button class="peaje-btn" onclick="redirectTo('https://alvarado-validacion-automatica-angeltorres.streamlit.app/')">
-            🏞️ ALVARADO
-        </button>
-        
-        <button class="peaje-btn" onclick="redirectTo('https://validacion-automatica-honda-angeltorres.streamlit.app/')">
-            🌊 HONDA
-        </button>
-        
-        <button class="peaje-btn" onclick="redirectTo('https://armero-validacion-automatica-angeltorres.streamlit.app/')">
-            🌋 ARMERO
-        </button>
-        
-        <button class="peaje-btn" style="background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); margin-top: 2rem;" onclick="closePeajeModal(); openConcessionModal()">
-            ↩️ Volver a Concesiones
-        </button>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# -----------------------------
 # Header Principal con Logo
 # -----------------------------
 st.markdown("""
@@ -827,15 +702,92 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-        <button id="conciliacionesBtn" class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
+""", unsafe_allow_html=True)
+
+# Botón para abrir el modal de concesiones
+if st.button("🧾 Acceder al menu de conciliaciones automáticas", key="conciliaciones_btn", use_container_width=True):
+    st.session_state.show_concession_modal = True
+
+st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Inyectar el JavaScript al final para asegurar que funcione
+# Modal de Concesiones (si está activo)
 # -----------------------------
-st.components.v1.html(modal_js, height=0)
+if st.session_state.show_concession_modal:
+    st.markdown("""
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">🏗️ Seleccione la Concesión</h2>
+            <p class="modal-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Botones de concesiones
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏢 APP GICA", key="app_gica", use_container_width=True):
+            st.session_state.show_concession_modal = False
+            js = "window.open('https://app-gica-validacion-automatica.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    with col2:
+        if st.button("🛣️ ALTERNATIVAS VIALES", key="alternativas_viales", use_container_width=True):
+            st.session_state.show_concession_modal = False
+            st.session_state.show_peaje_modal = True
+    
+    with col3:
+        if st.button("🌄 ALTO MAGDALENA (ALMA)", key="alma", use_container_width=True):
+            st.session_state.show_concession_modal = False
+            js = "window.open('https://alma-validacion-automatica.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    # Botón para cerrar
+    if st.button("❌ Cerrar", key="close_concession", use_container_width=True):
+        st.session_state.show_concession_modal = False
+
+# -----------------------------
+# Modal de Peajes (si está activo)
+# -----------------------------
+if st.session_state.show_peaje_modal:
+    st.markdown("""
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">🛣️ Seleccione el Peaje</h2>
+            <p class="modal-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Botones de peajes
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏞️ ALVARADO", key="alvarado", use_container_width=True):
+            st.session_state.show_peaje_modal = False
+            js = "window.open('https://alvarado-validacion-automatica-angeltorres.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    with col2:
+        if st.button("🌊 HONDA", key="honda", use_container_width=True):
+            st.session_state.show_peaje_modal = False
+            js = "window.open('https://validacion-automatica-honda-angeltorres.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    with col3:
+        if st.button("🌋 ARMERO", key="armero", use_container_width=True):
+            st.session_state.show_peaje_modal = False
+            js = "window.open('https://armero-validacion-automatica-angeltorres.streamlit.app/', '_blank');"
+            st.components.v1.html(f"<script>{js}</script>", height=0)
+    
+    # Botón para volver
+    if st.button("↩️ Volver a Concesiones", key="back_peaje", use_container_width=True):
+        st.session_state.show_peaje_modal = False
+        st.session_state.show_concession_modal = True
 
 # -----------------------------
 # Información adicional
