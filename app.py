@@ -32,45 +32,27 @@ def make_download_link(bytes_obj, filename, label="Descargar resultado"):
     return f"<a href='{href}' download='{filename}'>{label}</a>"
 
 # -----------------------------
-# Estado de sesión para controlar las ventanas emergentes
+# Estado de sesión para controlar los diálogos
 # -----------------------------
-if 'show_concession_modal' not in st.session_state:
-    st.session_state.show_concession_modal = False
+if 'show_concession_dialog' not in st.session_state:
+    st.session_state.show_concession_dialog = False
 
-if 'show_peaje_modal' not in st.session_state:
-    st.session_state.show_peaje_modal = False
-
-if 'selected_concession' not in st.session_state:
-    st.session_state.selected_concession = None
+if 'show_peaje_dialog' not in st.session_state:
+    st.session_state.show_peaje_dialog = False
 
 # -----------------------------
 # Funciones para manejar las selecciones
 # -----------------------------
-def open_concession_modal():
-    st.session_state.show_concession_modal = True
-    st.session_state.show_peaje_modal = False
+def open_concession_dialog():
+    st.session_state.show_concession_dialog = True
 
-def select_concession(concession):
-    st.session_state.selected_concession = concession
-    st.session_state.show_concession_modal = False
-    if concession == "APP GICA":
-        st.markdown('<script>window.open("https://app-gica-validacion-automatica.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
-    elif concession == "ALTO MAGDALENA (ALMA)":
-        st.markdown('<script>window.open("https://alma-validacion-automatica.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
-    elif concession == "ALTERNATIVAS VIALES":
-        st.session_state.show_peaje_modal = True
-
-def select_peaje(peaje):
-    st.session_state.show_peaje_modal = False
-    if peaje == "ALVARADO":
-        st.markdown('<script>window.open("https://alvarado-validacion-automatica-angeltorres.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
-    elif peaje == "HONDA":
-        st.markdown('<script>window.open("https://validacion-automatica-honda-angeltorres.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
-    elif peaje == "ARMERO":
-        st.markdown('<script>window.open("https://armero-validacion-automatica-angeltorres.streamlit.app/", "_blank");</script>', unsafe_allow_html=True)
+def redirect_to_url(url):
+    # Usar JavaScript para redireccionar en nueva pestaña
+    js = f"window.open('{url}', '_blank');"
+    st.components.v1.html(f"<script>{js}</script>", height=0)
 
 # -----------------------------
-# CSS Styling Profesional (incluyendo estilos para modales)
+# CSS Styling Profesional (incluyendo estilos para diálogos)
 # -----------------------------
 st.markdown("""
 <style>
@@ -94,8 +76,8 @@ st.markdown("""
         background-attachment: fixed;
     }
     
-    /* Modal Styles */
-    .modal-overlay {
+    /* Dialog Styles */
+    .dialog-overlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -109,7 +91,7 @@ st.markdown("""
         backdrop-filter: blur(5px);
     }
     
-    .modal-content {
+    .dialog-content {
         background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
         border-radius: 25px;
         padding: 3rem;
@@ -119,10 +101,10 @@ st.markdown("""
         width: 90%;
         text-align: center;
         position: relative;
-        animation: modalAppear 0.3s ease-out;
+        animation: dialogAppear 0.3s ease-out;
     }
     
-    @keyframes modalAppear {
+    @keyframes dialogAppear {
         from {
             opacity: 0;
             transform: scale(0.8) translateY(-20px);
@@ -133,7 +115,7 @@ st.markdown("""
         }
     }
     
-    .modal-title {
+    .dialog-title {
         color: #047857;
         font-size: 2.2rem;
         font-weight: 700;
@@ -141,7 +123,7 @@ st.markdown("""
         text-align: center;
     }
     
-    .modal-subtitle {
+    .dialog-subtitle {
         color: #4a5568;
         font-size: 1.3rem;
         margin-bottom: 2.5rem;
@@ -185,6 +167,33 @@ st.markdown("""
     
     .close-btn:hover {
         color: #e53e3e;
+    }
+    
+    /* Estilos para botones de Streamlit personalizados */
+    .stButton > button {
+        display: inline-block;
+        width: 100%;
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: #ffffff;
     }
     
     /* Resto de tus estilos existentes... */
@@ -521,12 +530,12 @@ st.markdown("""
             margin: 0.5rem 0;
         }
         
-        .modal-content {
+        .dialog-content {
             padding: 2rem;
             margin: 1rem;
         }
         
-        .modal-title {
+        .dialog-title {
             font-size: 1.8rem;
         }
     }
@@ -637,7 +646,7 @@ with col1:
 
 with col2:
     st.markdown("""
-    <div class="ezytec-section" style="margin-left: 0.5rem;">
+    <div class="ezeztec-section" style="margin-left: 0.5rem;">
         <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
             <img src="https://i.imgur.com/e22Lpxv.png" alt="Cybersource" style="width: 150px; height: 140px;">
@@ -718,100 +727,88 @@ st.markdown("""
             Validación especializada de conciliaciones de peajes de forma  <strong>Automática</strong>. 
             Genera mensaje para envio de email.
         </p>
-        <button onclick="window.concessionModalOpen()" class="direct-access-btn ezytec-btn">🧾 Acceder al menu de conciliaciones automáticas</button>
+""", unsafe_allow_html=True)
+
+# Botón para abrir el diálogo de concesiones
+if st.button("🧾 Acceder al menu de conciliaciones automáticas", key="conciliaciones_btn"):
+    st.session_state.show_concession_dialog = True
+
+st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# JavaScript para manejar la apertura del modal
+# Diálogo de selección de concesión
 # -----------------------------
-st.markdown("""
-<script>
-window.concessionModalOpen = function() {
-    window.parent.postMessage({
-        type: 'streamlit:setComponentValue',
-        value: 'open_concession_modal'
-    }, '*');
-}
-</script>
-""", unsafe_allow_html=True)
-
-# -----------------------------
-# Manejo de eventos desde JavaScript
-# -----------------------------
-if st.session_state.get('component_value') == 'open_concession_modal':
-    open_concession_modal()
-    st.session_state.component_value = None
-
-# -----------------------------
-# Modales (ventanas emergentes)
-# -----------------------------
-
-# Modal de selección de concesión
-if st.session_state.show_concession_modal:
+if st.session_state.show_concession_dialog:
+    # Crear un overlay y diálogo usando HTML/CSS
     st.markdown("""
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'close_concession_modal'}, '*')">×</button>
-            <h2 class="modal-title">🏗️ Seleccione la Concesión</h2>
-            <p class="modal-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
-            
-            <button class="concession-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_APP GICA'}, '*')">
-                🏢 APP GICA
-            </button>
-            
-            <button class="concession-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ALTERNATIVAS VIALES'}, '*')">
-                🛣️ ALTERNATIVAS VIALES
-            </button>
-            
-            <button class="concession-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ALTO MAGDALENA (ALMA)'}, '*')">
-                🌄 ALTO MAGDALENA (ALMA)
-            </button>
+    <div class="dialog-overlay">
+        <div class="dialog-content">
+            <h2 class="dialog-title">🏗️ Seleccione la Concesión</h2>
+            <p class="dialog-subtitle">Elija la concesión de peaje que desea conciliar automáticamente</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Botones para seleccionar concesión usando columnas
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏢 APP GICA", key="app_gica"):
+            st.session_state.show_concession_dialog = False
+            redirect_to_url("https://app-gica-validacion-automatica.streamlit.app/")
+    
+    with col2:
+        if st.button("🛣️ ALTERNATIVAS VIALES", key="alternativas_viales"):
+            st.session_state.show_concession_dialog = False
+            st.session_state.show_peaje_dialog = True
+    
+    with col3:
+        if st.button("🌄 ALTO MAGDALENA (ALMA)", key="alma"):
+            st.session_state.show_concession_dialog = False
+            redirect_to_url("https://alma-validacion-automatica.streamlit.app/")
+    
+    # Botón para cerrar el diálogo
+    if st.button("❌ Cerrar", key="close_concession"):
+        st.session_state.show_concession_dialog = False
 
-# Modal de selección de peaje (solo para ALTERNATIVAS VIALES)
-if st.session_state.show_peaje_modal:
+# -----------------------------
+# Diálogo de selección de peaje (solo para ALTERNATIVAS VIALES)
+# -----------------------------
+if st.session_state.show_peaje_dialog:
     st.markdown("""
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'close_peaje_modal'}, '*')">×</button>
-            <h2 class="modal-title">🛣️ Seleccione el Peaje</h2>
-            <p class="modal-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
-            
-            <button class="peaje-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ALVARADO'}, '*')">
-                🏞️ ALVARADO
-            </button>
-            
-            <button class="peaje-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_HONDA'}, '*')">
-                🌊 HONDA
-            </button>
-            
-            <button class="peaje-btn" onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'select_ARMERO'}, '*')">
-                🌋 ARMERO
-            </button>
+    <div class="dialog-overlay">
+        <div class="dialog-content">
+            <h2 class="dialog-title">🛣️ Seleccione el Peaje</h2>
+            <p class="dialog-subtitle">Elija el peaje específico de ALTERNATIVAS VIALES que desea conciliar</p>
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-# -----------------------------
-# Manejo de todas las selecciones
-# -----------------------------
-component_value = st.session_state.get('component_value')
-if component_value:
-    if component_value == 'close_concession_modal':
-        st.session_state.show_concession_modal = False
-    elif component_value == 'close_peaje_modal':
-        st.session_state.show_peaje_modal = False
-    elif component_value.startswith('select_'):
-        selection = component_value.replace('select_', '')
-        if selection in ['APP GICA', 'ALTERNATIVAS VIALES', 'ALTO MAGDALENA (ALMA)']:
-            select_concession(selection)
-        elif selection in ['ALVARADO', 'HONDA', 'ARMERO']:
-            select_peaje(selection)
-    st.session_state.component_value = None
+    
+    # Botones para seleccionar peaje usando columnas
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🏞️ ALVARADO", key="alvarado"):
+            st.session_state.show_peaje_dialog = False
+            redirect_to_url("https://alvarado-validacion-automatica-angeltorres.streamlit.app/")
+    
+    with col2:
+        if st.button("🌊 HONDA", key="honda"):
+            st.session_state.show_peaje_dialog = False
+            redirect_to_url("https://validacion-automatica-honda-angeltorres.streamlit.app/")
+    
+    with col3:
+        if st.button("🌋 ARMERO", key="armero"):
+            st.session_state.show_peaje_dialog = False
+            redirect_to_url("https://armero-validacion-automatica-angeltorres.streamlit.app/")
+    
+    # Botón para volver atrás
+    if st.button("↩️ Volver", key="back_peaje"):
+        st.session_state.show_peaje_dialog = False
+        st.session_state.show_concession_dialog = True
 
 # -----------------------------
 # Información adicional
