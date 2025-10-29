@@ -582,24 +582,25 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
+# Tercera fila: Accesspark (con el mismo formato que Ezytec)
 col5, col6 = st.columns(2)
 
 with col5:
     st.markdown("""
     <div class="ezytec-section" style="margin-right: 0.5rem;">
-        <div class="Accespark-card">
+        <div class="ezytec-card">
             <div style="text-align: center; margin-bottom: 1.5rem;">
-            <img src="https://i.imgur.com/P97ueLn.png"width: 150px; height: 140px;">
+            <img src="https://i.imgur.com/P97ueLn.png" alt="Accesspark" style="width: 150px; height: 140px;">
             </div>
             <h3 style="color: #047857; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
                 Sistema Accesspark
             </h3>
             <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">
-                Validación especializada para el sistema Ezytec con algoritmos avanzados de detección 
+                Validación especializada para el sistema Accesspark con algoritmos avanzados de detección 
                 y procesamiento en tiempo real de transacciones. Tecnología de punta para máxima precisión.
             </p>
             <a href="https://accespark-angeltorres.streamlit.app/" target="_blank">
-                <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Accesspark </button>
+                <button class="direct-access-btn ezytec-btn">⚡ Acceder al Validador Accesspark</button>
             </a>
         </div>
     </div>
